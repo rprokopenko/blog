@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  background: #ffffff;
+
+  .container {
+    width: 100%;
+    max-width: 1133px;
+    margin: 0 auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    cursor: pointer;
+  }
+
+  &__nav {
+    font-size: 18px;
+    font-weight: 700;
+
+    a {
+      color: #555555;
+    }
+
+    a:active {
+      border-bottom: 2px solid #555555;
+    }
+
+    a:hover {
+      border-bottom: 2px solid #555555;
+    }
+
+    a:last-child {
+      margin-left: 32px;
+    }
+  }
+}

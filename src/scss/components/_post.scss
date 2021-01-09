@@ -1,0 +1,137 @@
+.post {
+  background: #ffffff;
+  max-width: 360px;
+  margin-bottom: 35px;
+
+  ///https://iformatlogic.com/photo/plugin/article/2019/1576136631_1-org.jpg
+  &__image {
+    height: 200px;
+
+    background-image: url('https://iformatlogic.com/photo/plugin/article/2019/1576136631_1-org.jpg');
+    background-color: #e2e2e2;
+    background-size: cover;
+    background-position: 50%;
+  }
+
+  &__content {
+    padding: 30px;
+
+    .post__category {
+      margin-bottom: 15px;
+    }
+
+    .post__category a {
+      font-size: 12px;
+      font-weight: 500;
+      color: #868686;
+    }
+
+    .post__category a:hover {
+      border-bottom: 2px solid #868686;
+    }
+
+    .post__title {
+      line-height: 24px;
+      margin-bottom: 15px;
+    }
+
+    .post__title a {
+      font-size: 20px;
+      font-weight: 600;
+      color: #202020;
+    }
+
+    .post__title a:hover {
+      border-bottom: 2px solid #202020;
+    }
+
+    .post__text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: #868686;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 35px;
+
+      img {
+        cursor: pointer;
+      }
+
+      .likes {
+        display: flex;
+        align-items: center;
+
+        p {
+          font-weight: 500;
+          font-size: 14px;
+
+          color: #868686;
+
+          margin-left: 6px;
+        }
+      }
+
+      .views {
+        display: flex;
+        align-items: center;
+
+        p {
+          font-weight: 500;
+          font-size: 14px;
+
+          color: #868686;
+
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+}
+
+.post:nth-child(odd) {
+  margin-right: auto;
+}
+
+.first-post {
+  @extend .post;
+  display: flex;
+  max-width: none;
+  flex-basis: 100%;
+
+  .post__image {
+    height: auto;
+    flex: 1.111;
+    max-width: 360px;
+  }
+
+  .post__content {
+    flex: 1;
+
+    .post__title {
+      line-height: 34px;
+    }
+
+    .post__title a {
+      font-size: 28px;
+    }
+
+    .post__text {
+      -webkit-line-clamp: 7;
+    }
+  }
+}
+
+.first-post:nth-child(odd) {
+  margin-right: 0;
+}

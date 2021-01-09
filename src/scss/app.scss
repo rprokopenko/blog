@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'libs/normalize';
+
+@import 'pages/all';
+@import 'components/all';
+
+body {
+  background-color: $background;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1133px;
+  margin: 0 auto;
+}

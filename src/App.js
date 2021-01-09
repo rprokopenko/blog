@@ -4,12 +4,14 @@ import { Home } from './pages';
 
 const App = () => {
   return (
-    <div className='wrapper'>
+    <>
       <Header />
-      <div className='content'>
-        <Home />
+      <div className='wrapper'>
+        <div className='content'>
+          <Home />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
