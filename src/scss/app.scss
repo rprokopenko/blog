@@ -52,3 +52,35 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 1134px) {
+  .wrapper {
+    max-width: 760px;
+
+    .content {
+      .columns {
+        flex-direction: column-reverse;
+
+        .column {
+          margin-left: 0;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .wrapper {
+    .content {
+      .columns {
+        .main-column {
+          max-width: 300px;
+          justify-content: center;
+          flex: 1;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

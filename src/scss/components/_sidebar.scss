@@ -76,3 +76,10 @@
     }
   }
 }
+
+@media screen and (max-width: 1134px) {
+  .sidebar {
+    width: 300px;
+    margin: 0 0 25px 0;
+  }
+}

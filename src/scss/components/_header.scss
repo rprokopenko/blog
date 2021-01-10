@@ -37,3 +37,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1134px) {
+  .header {
+    .container {
+      max-width: 760px;
+    }
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .header {
+    .container {
+      max-width: 300px;
+    }
+  }
+  .header__logo {
+    img {
+      width: 120px;
+    }
+  }
+  .header__nav {
+    font-size: 14px;
+  }
+}

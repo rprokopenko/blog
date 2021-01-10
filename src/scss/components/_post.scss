@@ -134,3 +134,15 @@
 .first-post:nth-child(odd) {
   margin-right: 0;
 }
+
+@media screen and (max-width: 720px) {
+  .post {
+    margin: 0 auto 35px auto;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .post {
+    width: 300px;
+  }
+}

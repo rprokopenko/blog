@@ -1,11 +1,14 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
 
 const Post = ({ isFirst = false }) => {
+  const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
+
   return (
-    <div className={isFirst ? 'first-post' : 'post'}>
+    <div className={!isMobile && isFirst ? 'first-post' : 'post'}>
       <div className='post__image'></div>
       <div className='post__content'>
         <h4 className='post__category'>
