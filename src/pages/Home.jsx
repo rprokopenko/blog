@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Post from '../components/Post';
+import { Post, Sidebar } from '../components';
 
 const Home = () => {
   return (
@@ -27,7 +27,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='column'>aside</div>
+          <div className='column'>
+            <Sidebar />
+          </div>
         </div>
       </div>
     </div>
