@@ -13,4 +13,42 @@ body {
   height: 100%;
   max-width: 1133px;
   margin: 0 auto;
+
+  .content {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 35px;
+
+    .title {
+      color: #202020;
+
+      font-size: 24px;
+      font-weight: 500;
+      height: 30px;
+
+      margin-bottom: 25px;
+    }
+
+    .columns {
+      display: flex;
+
+      .main-column {
+        flex-basis: 760px;
+
+        .large-post {
+          display: flex;
+        }
+
+        .two-post {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      .column {
+        flex: 1;
+        margin-left: 60px;
+      }
+    }
+  }
 }

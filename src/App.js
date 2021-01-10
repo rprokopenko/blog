@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './components';
+import { Header, Sidebar } from './components';
 import { Home } from './pages';
 
 const App = () => {
@@ -8,7 +8,14 @@ const App = () => {
       <Header />
       <div className='wrapper'>
         <div className='content'>
-          <Home />
+          <div className='columns'>
+            <div className='main-column'>
+              <Home />
+            </div>
+            <div className='column'>
+              <Sidebar />
+            </div>
+          </div>
         </div>
       </div>
     </>
