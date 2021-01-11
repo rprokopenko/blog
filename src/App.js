@@ -1,6 +1,8 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
 import { Header, Sidebar } from './components';
-import { Home } from './pages';
+import { AllPosts, Home } from './pages';
 
 const App = () => {
   return (
@@ -10,7 +12,8 @@ const App = () => {
         <div className='content'>
           <div className='columns'>
             <div className='main-column'>
-              <Home />
+              <Route path='/' component={Home} exact />
+              <Route path='/allposts' component={AllPosts} exact />
             </div>
             <div className='column'>
               <Sidebar />
