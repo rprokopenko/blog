@@ -1,44 +1,49 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import caretDownSvg from '../assets/img/caret-down.svg';
 
 const Sidebar = () => {
+  const [isShown, setIsShown] = React.useState(true);
+
+  const toggleIsShown = () => setIsShown(!isShown);
+
   return (
     <div className='sidebar'>
       <div className='container'>
         <div className='sidebar__menu'>
           <ul className='menu__list'>
             <li>
-              <a href='/'>Web programming</a>
-              <img className='' src={caretDownSvg} alt='caret-down' />
-              <ul className='web-items'>
+              <span onClick={toggleIsShown}>Web programming</span>
+              <img className={isShown ? '' : 'caret-up'} src={caretDownSvg} alt='caret-down' />
+              <ul className='web-items' style={isShown ? null : { display: 'none' }}>
                 <li>
-                  <a href='/'>JavaScript</a>
+                  <Link to='/web-programming/JavaScript'>JavaScript</Link>
                 </li>
                 <li>
-                  <a className='active' href='/'>
+                  <Link className='active' to='/web-programming/ReactJS'>
                     ReactJS
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='/'>NodeJS</a>
+                  <Link to='/web-programming/NodeJS'>NodeJS</Link>
                 </li>
                 <li>
-                  <a href='/'>PHP</a>
+                  <Link to='/web-programming/PHP'>PHP</Link>
                 </li>
                 <li>
-                  <a href='/'>CSS</a>
+                  <Link to='/web-programming/CSS'>CSS</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href='/'>Notes</a>
+              <Link to='/notes'>Notes</Link>
             </li>
             <li>
-              <a href='/'>Advice</a>
+              <Link to='/advice'>Advice</Link>
             </li>
             <li>
-              <a href='/'>About me</a>
+              <a href='https://github.com/rprokopenko'>About me</a>
             </li>
           </ul>
         </div>

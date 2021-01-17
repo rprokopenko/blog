@@ -13,15 +13,22 @@
     li:last-child {
       margin-bottom: 0;
     }
-    a {
+    a,
+    span {
       font-weight: 500;
       font-size: 18px;
       line-height: 22px;
 
       color: #868686;
+      cursor: pointer;
     }
 
     a:hover {
+      color: #202020;
+      border-bottom: 2px solid #202020;
+    }
+
+    span:hover {
       color: #202020;
       border-bottom: 2px solid #202020;
     }
@@ -32,7 +39,7 @@
     }
 
     .menu__list {
-      a:first-child {
+      span {
         margin-right: 2px;
       }
 

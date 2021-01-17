@@ -24,16 +24,16 @@
       color: #555555;
     }
 
-    a:active {
-      border-bottom: 2px solid #555555;
-    }
-
     a:hover {
       border-bottom: 2px solid #555555;
     }
 
     a:last-child {
       margin-left: 32px;
+    }
+
+    .active {
+      border-bottom: 2px solid #555555;
     }
   }
 }

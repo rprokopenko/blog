@@ -1,7 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 import logoSvg from '../assets/img/logo.svg';
+
+const HeaderLink = ({ label, to, activeOnlyWhenExact }) => {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact,
+  });
+
+  return (
+    <Link className={match ? 'active' : ''} to={to}>
+      {label}
+    </Link>
+  );
+};
 
 const Header = () => {
   return (
@@ -13,8 +26,8 @@ const Header = () => {
           </div>
         </Link>
         <div className='header__nav'>
-          <Link to='/'>Home</Link>
-          <Link to='/allposts'>All Posts</Link>
+          <HeaderLink activeOnlyWhenExact={true} to='/' label='Home' />
+          <HeaderLink to='/allposts' label='All Posts' />
         </div>
       </div>
     </div>

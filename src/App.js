@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import { Header, Sidebar } from './components';
+import { Header, Sidebar, Main } from './components';
 import { AllPosts, Home } from './pages';
 
 const App = () => {
@@ -12,8 +12,13 @@ const App = () => {
         <div className='content'>
           <div className='columns'>
             <div className='main-column'>
-              <Route path='/' component={Home} exact />
-              <Route path='/allposts' component={AllPosts} exact />
+              <Switch>
+                <Route path='/' component={Home} exact />
+                <Route path='/allposts' component={AllPosts} exact />
+                <Route path='/web-programming/:categoryName' component={Main} />
+                <Route path='/notes' component={Main} />
+                <Route path='/advice' component={Main} />
+              </Switch>
             </div>
             <div className='column'>
               <Sidebar />
