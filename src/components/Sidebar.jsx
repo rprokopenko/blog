@@ -37,10 +37,10 @@ const Sidebar = () => {
               </ul>
             </li>
             <li>
-              <Link to='/notes'>Notes</Link>
+              <Link to='/Notes'>Notes</Link>
             </li>
             <li>
-              <Link to='/advice'>Advice</Link>
+              <Link to='/Advice'>Advice</Link>
             </li>
             <li>
               <a href='https://github.com/rprokopenko'>About me</a>
