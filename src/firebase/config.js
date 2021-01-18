@@ -1,3 +1,8 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
+
 const config = {
   apiKey: 'AIzaSyCLhNZve_cQorlZUZkkw_scHwUb3grXRBA',
   authDomain: 'blog-3c2f2.firebaseapp.com',
@@ -7,4 +12,22 @@ const config = {
   appId: '1:437058172972:web:38c8f42b66bc54d02ab989',
 };
 
-firebase.initializeApp(firebaseConfig);
+class Firebase {
+  constructor() {
+    firebase.initializeApp(config);
+    this.auth = firebase.auth();
+    this.db = firebase.firestore();
+  }
+
+  async getPosts() {
+    let postsArray = [];
+
+    const posts = await firebase.firestore().collection('posts').get();
+    posts.forEach((doc) => {
+      postsArray.push({ id: doc.id, data: doc.data() });
+    });
+    return postsArray;
+  }
+}
+
+export default new Firebase();
