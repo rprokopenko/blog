@@ -8,7 +8,23 @@ const Main = () => {
   return (
     <>
       <h3 className='title'>{categoryName || advice || notes}</h3>
-      {console.log(categoryName)}
+
+      <div className='two-post'>
+        <Post />
+        <Post />
+      </div>
+      <div className='two-post'>
+        <Post />
+        <Post />
+      </div>
+      <div className='two-post'>
+        <Post />
+        <Post />
+      </div>
+      <div className='two-post'>
+        <Post />
+        <Post />
+      </div>
       <div className='two-post'>
         <Post />
         <Post />

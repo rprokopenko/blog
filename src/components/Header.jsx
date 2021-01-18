@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 
 import logoSvg from '../assets/img/logo.svg';
 
-const HeaderLink = ({ label, to, activeOnlyWhenExact }) => {
+export const ActiveLink = ({ label, to, activeOnlyWhenExact }) => {
   let match = useRouteMatch({
     path: to,
     exact: activeOnlyWhenExact,
@@ -26,8 +26,8 @@ const Header = () => {
           </div>
         </Link>
         <div className='header__nav'>
-          <HeaderLink activeOnlyWhenExact={true} to='/' label='Home' />
-          <HeaderLink to='/allposts' label='All Posts' />
+          <ActiveLink activeOnlyWhenExact={true} to='/' label='Home' />
+          <ActiveLink to='/allposts' label='All Posts' />
         </div>
       </div>
     </div>

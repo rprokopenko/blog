@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { ActiveLink } from './Header';
 
 import caretDownSvg from '../assets/img/caret-down.svg';
 
@@ -18,32 +19,32 @@ const Sidebar = () => {
               <img className={isShown ? '' : 'caret-up'} src={caretDownSvg} alt='caret-down' />
               <ul className='web-items' style={isShown ? null : { display: 'none' }}>
                 <li>
-                  <Link to='/web-programming/JavaScript'>JavaScript</Link>
+                  <ActiveLink activeOnlyWhenExact={true} to='/web-programming/JavaScript' label='JavaScript' />
                 </li>
                 <li>
-                  <Link className='active' to='/web-programming/ReactJS'>
-                    ReactJS
-                  </Link>
+                  <ActiveLink to='/web-programming/ReactJS' label='ReactJS' />
                 </li>
                 <li>
-                  <Link to='/web-programming/NodeJS'>NodeJS</Link>
+                  <ActiveLink to='/web-programming/NodeJS' label='NodeJS' />
                 </li>
                 <li>
-                  <Link to='/web-programming/PHP'>PHP</Link>
+                  <ActiveLink to='/web-programming/PHP' label='PHP' />
                 </li>
                 <li>
-                  <Link to='/web-programming/CSS'>CSS</Link>
+                  <ActiveLink to='/web-programming/CSS' label='CSS' />
                 </li>
               </ul>
             </li>
             <li>
-              <Link to='/Notes'>Notes</Link>
+              <ActiveLink to='/Notes' label='Notes' />
             </li>
             <li>
-              <Link to='/Advice'>Advice</Link>
+              <ActiveLink to='/Advice' label='Advice' />
             </li>
             <li>
-              <a href='https://github.com/rprokopenko'>About me</a>
+              <a target='_blank' rel='noreferrer' href='https://github.com/rprokopenko'>
+                About me
+              </a>
             </li>
           </ul>
         </div>
