@@ -22,10 +22,11 @@ class Firebase {
   async getPosts() {
     let postsArray = [];
 
-    const posts = await firebase.firestore().collection('posts').get();
+    const posts = await this.db.collection('posts').where('category', '==', 'ReactJS').get();
     posts.forEach((doc) => {
       postsArray.push({ id: doc.id, data: doc.data() });
     });
+
     return postsArray;
   }
 }

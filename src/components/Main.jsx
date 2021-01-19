@@ -8,27 +8,22 @@ import { getPosts } from '../redux/actions/getPosts';
 const Main = () => {
   let { categoryName, advice, notes } = useParams();
 
-  const posts = useSelector((state) => {
-    console.log('State: ', state.getPosts.posts);
-    return state.getPosts.posts;
-  });
+  const posts = useSelector(({ getPosts }) => getPosts.posts);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <h3 className='title'>{categoryName || advice || notes}</h3>
-
-      {posts.map((post) => {
-        return <Post key={post.id} {...post.data} />;
-      })}
       <div className='two-post'>
-        <Post />
-        <Post />
+        {posts &&
+          posts.map((post) => {
+            return <Post key={post.id} {...post.data} />;
+          })}
       </div>
     </>
   );
