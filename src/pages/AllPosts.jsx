@@ -1,30 +1,38 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Post } from '../components';
+import { getPosts } from '../redux/actions/getPosts';
+import { Post, Loader } from '../components';
 
 const AllPosts = () => {
+  const posts = useSelector(({ getPosts }) => getPosts.posts);
+  const isLoaded = useSelector(({ getPosts }) => getPosts.isLoaded);
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(getPosts());
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
       <h3 className='title'>All Posts</h3>
       <div className='two-post'>
-        <Post />
-        <Post />
-      </div>
-      <div className='two-post'>
-        <Post />
-        <Post />
-      </div>
-      <div className='two-post'>
-        <Post />
-        <Post />
-      </div>
-      <div className='two-post'>
-        <Post />
-        <Post />
-      </div>
-      <div className='two-post'>
-        <Post />
-        <Post />
+        {isLoaded ? (
+          posts.length === 0 ? (
+            <div className='no-results'>
+              <div className='content'>
+                <h2 className='title'>No posts</h2>
+              </div>
+            </div>
+          ) : (
+            posts.map((post) => {
+              return <Post key={post.id} {...post.data} />;
+            })
+          )
+        ) : (
+          <Loader />
+        )}
       </div>
     </>
   );

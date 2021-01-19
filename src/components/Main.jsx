@@ -2,19 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { Post } from '../components';
-import { getPosts } from '../redux/actions/getPosts';
+import { getPostsByCategory } from '../redux/actions/getPostsByCategory';
+import { Post, Loader } from '../components';
 
 const Main = () => {
   let { categoryName, advice, notes } = useParams();
 
-  const posts = useSelector(({ getPosts }) => getPosts.posts);
-  const isLoaded = useSelector(({ getPosts }) => getPosts.isLoaded);
+  const posts = useSelector(({ getPostsByCategory }) => getPostsByCategory.posts);
+  const isLoaded = useSelector(({ getPostsByCategory }) => getPostsByCategory.isLoaded);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getPosts(categoryName || advice || notes));
+    dispatch(getPostsByCategory(categoryName || advice || notes));
   }, [categoryName || advice || notes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -34,12 +34,7 @@ const Main = () => {
             })
           )
         ) : (
-          <div className='lds-ring'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <Loader />
         )}
       </div>
     </>

@@ -1,15 +1,39 @@
 import firebase from '../../firebase/config';
-import { GET_POSTS, SET_LOADED } from '../types';
+import { GET_POSTS, GET_POSTS_BY_CATEGORY, GET_POSTS_BY_LATEST, GET_POSTS_BY_POPULAR, SET_LOADED } from '../types';
 
 export const setLoaded = (payload) => ({
   type: SET_LOADED,
   payload,
 });
 
-export const getPosts = (categoryName) => {
+export const getPosts = () => {
   return async function (dispatch) {
     dispatch({ type: SET_LOADED, payload: false });
-    const postsArray = await firebase.getPosts(categoryName);
+    const postsArray = await firebase.getPosts();
     dispatch({ type: GET_POSTS, payload: postsArray });
+  };
+};
+
+export const getPostsByPopular = () => {
+  return async function (dispatch) {
+    dispatch({ type: SET_LOADED, payload: false });
+    const postsArray = await firebase.getPostsByPopular();
+    dispatch({ type: GET_POSTS_BY_POPULAR, payload: postsArray });
+  };
+};
+
+export const getPostsByLatest = () => {
+  return async function (dispatch) {
+    dispatch({ type: SET_LOADED, payload: false });
+    const postsArray = await firebase.getPostsByLatest();
+    dispatch({ type: GET_POSTS_BY_LATEST, payload: postsArray });
+  };
+};
+
+export const getPostsByCategory = (categoryName) => {
+  return async function (dispatch) {
+    dispatch({ type: SET_LOADED, payload: false });
+    const postsArray = await firebase.getPostsByCategory(categoryName);
+    dispatch({ type: GET_POSTS_BY_CATEGORY, payload: postsArray });
   };
 };
