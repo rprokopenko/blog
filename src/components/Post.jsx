@@ -34,8 +34,3 @@ const Post = ({ cover, category, title, content, likes, views, isFirst = false }
 };
 
 export default Post;
-
-/*You can pass callbacks to components in different ways. I came from Airbnb's best practices and from my own experience and share
-          how to properly throw methods into your comp. You can pass I came from Airbnb's best practicethrow methods into your comp how to
-          properly throw methods into your comp. You can pass I came from Airbnb's best practicethrow methods into your comphow to properly
-          throw methods into your comp. You can pass I came from Airbnb's best practicethrow methods into your comp*/

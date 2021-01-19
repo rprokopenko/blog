@@ -19,10 +19,10 @@ class Firebase {
     this.db = firebase.firestore();
   }
 
-  async getPosts() {
+  async getPosts(categoryName) {
     let postsArray = [];
 
-    const posts = await this.db.collection('posts').where('category', '==', 'ReactJS').get();
+    const posts = await this.db.collection('posts').where('category', '==', `${categoryName}`).get();
     posts.forEach((doc) => {
       postsArray.push({ id: doc.id, data: doc.data() });
     });

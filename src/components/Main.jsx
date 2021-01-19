@@ -9,21 +9,38 @@ const Main = () => {
   let { categoryName, advice, notes } = useParams();
 
   const posts = useSelector(({ getPosts }) => getPosts.posts);
+  const isLoaded = useSelector(({ getPosts }) => getPosts.isLoaded);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
+    dispatch(getPosts(categoryName || advice || notes));
+  }, [categoryName || advice || notes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <h3 className='title'>{categoryName || advice || notes}</h3>
       <div className='two-post'>
-        {posts &&
-          posts.map((post) => {
-            return <Post key={post.id} {...post.data} />;
-          })}
+        {isLoaded ? (
+          posts.length === 0 ? (
+            <div className='no-results'>
+              <div className='content'>
+                <h2 className='title'>No posts</h2>
+              </div>
+            </div>
+          ) : (
+            posts.map((post) => {
+              return <Post key={post.id} {...post.data} />;
+            })
+          )
+        ) : (
+          <div className='lds-ring'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        )}
       </div>
     </>
   );
