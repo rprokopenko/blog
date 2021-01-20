@@ -62,6 +62,12 @@ class Firebase {
 
     return postsArray;
   }
+
+  async getPost(postid) {
+    const post = await firebase.firestore().collection('posts').doc(postid).get();
+    const postData = post.data();
+    return postData;
+  }
 }
 
 export default new Firebase();

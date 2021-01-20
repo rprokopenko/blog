@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Header, Sidebar, Main } from './components';
-import SinglePost from './components/SinglePost';
+import { Header, Sidebar, Main, SinglePost } from './components';
 import { AllPosts, Home } from './pages';
 
 const App = () => {
@@ -13,12 +12,12 @@ const App = () => {
         <div className='content'>
           <div className='columns'>
             <div className='main-column'>
-              {/*<Switch>
+              <Switch>
                 <Route path='/' component={Home} exact />
                 <Route path='/allposts' component={AllPosts} exact />
                 <Route path='/category/:categoryName' component={Main} exact />
-              </Switch>*/}
-              <SinglePost />
+                <Route path='/post/:id' component={SinglePost} exact />
+              </Switch>
             </div>
             <div className='column'>
               <Sidebar />

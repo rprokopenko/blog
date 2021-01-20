@@ -1,13 +1,13 @@
-import { GET_POSTS, SET_LOADED } from '../types';
+import { GET_POST, SET_LOADED } from '../types';
 
 const initialState = {
-  posts: [],
+  posts: {},
   isLoaded: false,
 };
 
-const getPosts = (state = initialState, action) => {
+const getPost = (state = initialState, action) => {
   switch (action.type) {
-    case GET_POSTS:
+    case GET_POST:
       return {
         ...state,
         posts: action.payload,
@@ -25,4 +25,4 @@ const getPosts = (state = initialState, action) => {
   }
 };
 
-export default getPosts;
+export default getPost;

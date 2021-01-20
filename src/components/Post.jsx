@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
 
-const Post = ({ cover, category, title, content, likes, views, isFirst = false }) => {
+const Post = ({ id, cover, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
 
   return (
@@ -16,7 +16,7 @@ const Post = ({ cover, category, title, content, likes, views, isFirst = false }
           <Link to={'/category/' + category}>{'# ' + category}</Link>
         </h4>
         <h2 className='post__title'>
-          <a href='/'>{title}</a>
+          <Link to={'/post/' + id}>{title}</Link>
         </h2>
         <p className='post__text'>{content}</p>
         <div className='post__footer'>

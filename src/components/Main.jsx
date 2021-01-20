@@ -30,7 +30,7 @@ const Main = () => {
             </div>
           ) : (
             posts.map((post) => {
-              return <Post key={post.id} {...post.data} />;
+              return <Post key={post.id} {...post.data} id={post.id} />;
             })
           )
         ) : (
