@@ -19,27 +19,27 @@ const Sidebar = () => {
               <img className={isShown ? '' : 'caret-up'} src={caretDownSvg} alt='caret-down' />
               <ul className='web-items' style={isShown ? null : { display: 'none' }}>
                 <li>
-                  <ActiveLink activeOnlyWhenExact={true} to='/web-programming/JavaScript' label='JavaScript' />
+                  <ActiveLink activeOnlyWhenExact={true} to='/category/JavaScript' label='JavaScript' />
                 </li>
                 <li>
-                  <ActiveLink to='/web-programming/ReactJS' label='ReactJS' />
+                  <ActiveLink to='/category/ReactJS' label='ReactJS' />
                 </li>
                 <li>
-                  <ActiveLink to='/web-programming/NodeJS' label='NodeJS' />
+                  <ActiveLink to='/category/NodeJS' label='NodeJS' />
                 </li>
                 <li>
-                  <ActiveLink to='/web-programming/PHP' label='PHP' />
+                  <ActiveLink to='/category/PHP' label='PHP' />
                 </li>
                 <li>
-                  <ActiveLink to='/web-programming/CSS' label='CSS' />
+                  <ActiveLink to='/category/CSS' label='CSS' />
                 </li>
               </ul>
             </li>
             <li>
-              <ActiveLink to='/Notes' label='Notes' />
+              <ActiveLink to='/category/Notes' label='Notes' />
             </li>
             <li>
-              <ActiveLink to='/Advice' label='Advice' />
+              <ActiveLink to='/category/Advice' label='Advice' />
             </li>
             <li>
               <a target='_blank' rel='noreferrer' href='https://github.com/rprokopenko'>

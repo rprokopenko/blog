@@ -19,10 +19,10 @@ class Firebase {
     this.db = firebase.firestore();
   }
 
-  async getPostsByCategory(categoryName) {
+  async getPosts() {
     let postsArray = [];
 
-    const posts = await this.db.collection('posts').where('category', '==', `${categoryName}`).get();
+    const posts = await this.db.collection('posts').orderBy('views', 'desc').get();
     posts.forEach((doc) => {
       postsArray.push({ id: doc.id, data: doc.data() });
     });
@@ -30,10 +30,10 @@ class Firebase {
     return postsArray;
   }
 
-  async getPosts() {
+  async getPostsByCategory(categoryName) {
     let postsArray = [];
 
-    const posts = await this.db.collection('posts').orderBy('views', 'desc').get();
+    const posts = await this.db.collection('posts').where('category', '==', `${categoryName}`).get();
     posts.forEach((doc) => {
       postsArray.push({ id: doc.id, data: doc.data() });
     });

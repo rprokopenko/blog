@@ -6,7 +6,7 @@ import { getPostsByCategory } from '../redux/actions/getPostsByCategory';
 import { Post, Loader } from '../components';
 
 const Main = () => {
-  let { categoryName, advice, notes } = useParams();
+  let { categoryName } = useParams();
 
   const posts = useSelector(({ getPostsByCategory }) => getPostsByCategory.posts);
   const isLoaded = useSelector(({ getPostsByCategory }) => getPostsByCategory.isLoaded);
@@ -14,12 +14,12 @@ const Main = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getPostsByCategory(categoryName || advice || notes));
-  }, [categoryName || advice || notes]); // eslint-disable-line react-hooks/exhaustive-deps
+    dispatch(getPostsByCategory(categoryName));
+  }, [categoryName]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
-      <h3 className='title'>{categoryName || advice || notes}</h3>
+      <h3 className='title'>{categoryName}</h3>
       <div className='two-post'>
         {isLoaded ? (
           posts.length === 0 ? (

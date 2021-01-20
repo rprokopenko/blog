@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
@@ -12,7 +13,7 @@ const Post = ({ cover, category, title, content, likes, views, isFirst = false }
       <div className='post__image' style={{ backgroundImage: 'url(' + cover + ')' }}></div>
       <div className='post__content'>
         <h4 className='post__category'>
-          <a href='/'>{'# ' + category}</a>
+          <Link to={'/category/' + category}>{'# ' + category}</Link>
         </h4>
         <h2 className='post__title'>
           <a href='/'>{title}</a>

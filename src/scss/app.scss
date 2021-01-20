@@ -29,6 +29,17 @@ body {
       margin-bottom: 25px;
     }
 
+    .title a {
+      font-weight: 600;
+      font-size: 20px;
+
+      color: #202020;
+    }
+
+    .title a:hover {
+      border-bottom: 2px solid #202020;
+    }
+
     .columns {
       display: flex;
 

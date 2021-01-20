@@ -13,86 +13,77 @@
 
   &__content {
     padding: 30px;
+  }
 
-    .post__category {
-      margin-bottom: 15px;
+  &__category {
+    margin-bottom: 15px;
+  }
+
+  &__category a {
+    font-size: 12px;
+    font-weight: 500;
+    color: #868686;
+  }
+
+  &__category a:hover {
+    border-bottom: 2px solid #868686;
+  }
+
+  &__title {
+    line-height: 24px;
+    margin-bottom: 15px;
+  }
+
+  &__title a {
+    font-size: 20px;
+    font-weight: 600;
+    color: #202020;
+  }
+
+  &__title a:hover {
+    border-bottom: 2px solid #202020;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #868686;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 35px;
+
+    img {
+      cursor: pointer;
     }
 
-    .post__category a {
-      font-size: 12px;
-      font-weight: 500;
-      color: #868686;
-    }
-
-    .post__category a:hover {
-      border-bottom: 2px solid #868686;
-    }
-
-    .post__title {
-      line-height: 24px;
-      margin-bottom: 15px;
-    }
-
-    .post__title a {
-      font-size: 20px;
-      font-weight: 600;
-      color: #202020;
-    }
-
-    .post__title a:hover {
-      border-bottom: 2px solid #202020;
-    }
-
-    .post__text {
+    p {
       font-weight: 500;
       font-size: 14px;
-      line-height: 17px;
 
       color: #868686;
 
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      margin-left: 6px;
     }
 
-    .post__footer {
+    .likes {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 35px;
+    }
 
-      img {
-        cursor: pointer;
-      }
-
-      .likes {
-        display: flex;
-        align-items: center;
-
-        p {
-          font-weight: 500;
-          font-size: 14px;
-
-          color: #868686;
-
-          margin-left: 6px;
-        }
-      }
-
-      .views {
-        display: flex;
-        align-items: center;
-
-        p {
-          font-weight: 500;
-          font-size: 14px;
-
-          color: #868686;
-
-          margin-left: 6px;
-        }
-      }
+    .views {
+      display: flex;
+      align-items: center;
     }
   }
 }
