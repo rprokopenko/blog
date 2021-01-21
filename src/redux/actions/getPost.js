@@ -1,4 +1,4 @@
-import firebase from '../firebase/config';
+import firebase from '../../firebase/config';
 import { GET_POST, SET_LOADED } from '../types';
 
 export const setLoaded = (payload) => ({
