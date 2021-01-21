@@ -28,18 +28,11 @@
   }
 
   &__title {
-    line-height: 44px;
-    margin-bottom: 2px;
-  }
-
-  &__title a {
     font-weight: 600;
     font-size: 34px;
     color: #202020;
-  }
-
-  &__title a:hover {
-    cursor: default;
+    line-height: 44px;
+    margin-bottom: 2px;
   }
 
   &__date {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { getPost } from '../redux/actions/getPost';
 
@@ -21,6 +22,12 @@ const SinglePost = (props) => {
     dispatch(getPost(props.match.params.id));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const formatedTime = (sec) => {
+    const data = moment(sec * 1000).format('DD.MM.YYYY');
+    const time = moment(sec * 1000).format('HH:mm');
+    return 'Date: ' + data + ' at ' + time;
+  };
+
   return (
     <>
       {isLoaded ? (
@@ -32,12 +39,10 @@ const SinglePost = (props) => {
             <div className='single-post__image' style={{ backgroundImage: 'url(' + post.cover + ')' }}></div>
             <div className='single-post__content'>
               <h4 className='single-post__category'>
-                <Link to={'/'}>{'# ' + post.category}</Link>
+                <Link to={'/category/' + post.category}>{'# ' + post.category}</Link>
               </h4>
-              <h2 className='single-post__title'>
-                <a href='/'>{post.title}</a>
-              </h2>
-              <h4 className='single-post__date'>Date: 05.12.2019 at 11:14</h4>
+              <h2 className='single-post__title'>{post.title}</h2>
+              <h4 className='single-post__date'>{formatedTime(post.time.seconds)}</h4>
               <p className='single-post__text'>{post.content}</p>
               <div className='single-post__footer'>
                 <div className='likes'>

@@ -28,11 +28,7 @@ const Main = () => {
             <NoPosts />
           ) : (
             filterPosts.map((post) => {
-<<<<<<< HEAD
               return <Post key={post.id} id={post.id} {...post.data} />;
-=======
-              return <Post key={post.id} {...post.data} id={post.id} />;
->>>>>>> 702292e009bde7d8cfe4b00a3ecb8b676dce62ae
             })
           )
         ) : (
