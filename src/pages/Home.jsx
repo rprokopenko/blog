@@ -14,7 +14,11 @@ const Home = () => {
   const postsByPopular = posts.sort((a, b) => b.data.likes - a.data.likes).slice(0, 4);
 
   React.useEffect(() => {
+<<<<<<< HEAD
     dispatch(getPosts());
+=======
+    dispatch(getPosts);
+>>>>>>> 702292e009bde7d8cfe4b00a3ecb8b676dce62ae
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
