@@ -1,0 +1,122 @@
+.login {
+  background: #ffffff;
+  border-radius: 15px;
+  max-width: 520px;
+
+  margin: auto;
+
+  .container {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 48px 70px 60px 70px;
+
+    h2 {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 37px;
+
+      color: #555555;
+
+      margin-bottom: 35px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #555555;
+
+        margin-bottom: 10px;
+      }
+
+      input {
+        height: 52px;
+
+        background: #ffffff;
+        border: 1px solid #868686;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #555555;
+
+        padding: 15px;
+        margin-bottom: 28px;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        border: 1px solid #868686;
+        -webkit-text-fill-color: #555555;
+        -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      input[type='submit'] {
+        max-width: 150px;
+        background: #555555;
+        border-radius: 31px;
+        border-color: #555555;
+
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #ffffff;
+
+        cursor: pointer;
+
+        margin-top: 30px;
+        margin-bottom: 0;
+        padding: 0;
+      }
+
+      input[type='submit']:hover {
+        background: #ffffff;
+        color: #555555;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .login {
+    .container {
+      h2 {
+        font-size: 17px;
+      }
+
+      form {
+        label {
+          font-size: 13px;
+        }
+
+        input {
+          font-size: 14px;
+        }
+
+        input[type='submit'] {
+          max-width: 120px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

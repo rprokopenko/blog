@@ -1,15 +1,16 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import { Header, Sidebar, Main, SinglePost } from './components';
-import { AllPosts, Home } from './pages';
+import { Admin, AllPosts, Home } from './pages';
 
-const App = () => {
+const App = (props) => {
   return (
     <>
-      <Header />
+      {props.location.pathname !== '/admin' ? <Header /> : ''}
       <div className='wrapper'>
         <div className='content'>
+          <Route path='/admin' component={Admin} />
           <div className='columns'>
             <div className='main-column'>
               <Switch>
@@ -19,9 +20,7 @@ const App = () => {
                 <Route path='/post/:id' component={SinglePost} exact />
               </Switch>
             </div>
-            <div className='column'>
-              <Sidebar />
-            </div>
+            <div className='column'>{props.location.pathname !== '/admin' ? <Sidebar /> : ''}</div>
           </div>
         </div>
       </div>
@@ -29,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
