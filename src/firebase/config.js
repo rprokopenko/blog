@@ -35,6 +35,24 @@ class Firebase {
     const postData = post.data();
     return postData;
   }
+
+  async loginUser(email, password) {
+    const user = await firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        console.log(err);
+      });
+    return user;
+  }
+
+  async logoutUser() {
+    const logout = await firebase
+      .auth()
+      .signOut()
+      .catch((err) => console.log(err));
+    return logout;
+  }
 }
 
 export default new Firebase();

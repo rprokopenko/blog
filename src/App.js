@@ -1,26 +1,27 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
-import { Header, Sidebar, Main, SinglePost } from './components';
-import { Admin, AllPosts, Home } from './pages';
+import { Header, Sidebar } from './components';
+import { Admin, Login } from './pages';
+import Routes from './Routes';
 
 const App = (props) => {
   return (
     <>
-      {props.location.pathname !== '/admin' ? <Header /> : ''}
+      {props.location.pathname !== '/admin/login' ? <Header /> : ''}
       <div className='wrapper'>
         <div className='content'>
-          <Route path='/admin' component={Admin} />
+          <Switch>
+            <Route path='/admin/login' component={Login} />
+            <Route path='/admin' component={Admin} />
+            <Redirect to='/admin/login' />
+          </Switch>
+
           <div className='columns'>
             <div className='main-column'>
-              <Switch>
-                <Route path='/' component={Home} exact />
-                <Route path='/allposts' component={AllPosts} exact />
-                <Route path='/category/:categoryName' component={Main} exact />
-                <Route path='/post/:id' component={SinglePost} exact />
-              </Switch>
+              <Routes />
             </div>
-            <div className='column'>{props.location.pathname !== '/admin' ? <Sidebar /> : ''}</div>
+            <div className='column'>{props.location.pathname !== '/admin/login' ? <Sidebar /> : ''}</div>
           </div>
         </div>
       </div>
