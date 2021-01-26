@@ -1,13 +1,12 @@
 import React from 'react';
+import { message } from 'antd';
 import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import { loginUser } from '../redux/actions/loginUser';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [redirect, setRedirect] = React.useState(false);
 
   const dispatch = useDispatch();
   const logInUserAction = (email, password) => dispatch(loginUser(email, password));
@@ -17,16 +16,17 @@ const Login = () => {
 
     if (email !== '' && password !== '') {
       let user = await logInUserAction(email, password);
+
+      /*
+      //validation this
       if (user) {
-        setRedirect(true);
+        message.success('Login Success');
       }
-    } else {
+       } else {
+      message.error('Login Failed');
+      }*/
     }
   };
-
-  if (redirect) {
-    return <Redirect to='/admin' />;
-  }
 
   return (
     <div className='login'>

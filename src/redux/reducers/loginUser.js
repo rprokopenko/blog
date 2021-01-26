@@ -2,6 +2,7 @@ import { LOGIN_USER, SET_LOADED } from '../types';
 
 const initialState = {
   user: {},
+  isLogin: false,
   isLoaded: false,
 };
 
@@ -11,6 +12,7 @@ const loginUser = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        isLogin: true,
         isLoaded: true,
       };
 
