@@ -2,7 +2,7 @@ import React from 'react';
 import { message } from 'antd';
 import { useDispatch } from 'react-redux';
 
-import { loginUser } from '../redux/actions/loginUser';
+import { loginUser } from '..//../redux/actions/loginUser';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
