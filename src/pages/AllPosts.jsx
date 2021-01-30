@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getPosts } from '../redux/actions/getPosts';
-import { Post, Loader, NoPosts } from '../components';
+import { Post, Loader, NotFound } from '../components';
 
 const AllPosts = () => {
   const posts = useSelector(({ getPosts }) => getPosts.posts);
@@ -20,7 +20,7 @@ const AllPosts = () => {
       <div className='two-post'>
         {isLoaded ? (
           posts.length === 0 ? (
-            <NoPosts />
+            <NotFound />
           ) : (
             posts.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;

@@ -1,12 +1,16 @@
 import React from 'react';
+import { BackButton } from '.';
 
 const NotFound = () => {
   return (
-    <div className='not-found'>
-      <div className='content'>
-        <h2 className='title'>Not Found</h2>
+    <>
+      <BackButton />
+      <div className='no-results'>
+        <div className='content'>
+          <h2 className='title'>404: Not Found</h2>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

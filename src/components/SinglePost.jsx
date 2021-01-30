@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import { getPost } from '../redux/actions/getPost';
 
-import { Loader } from '../components';
+import { BackButton, Loader } from '../components';
 
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
@@ -32,9 +32,7 @@ const SinglePost = (props) => {
     <>
       {isLoaded ? (
         <>
-          <h3 className='title'>
-            <Link to='/'>Back</Link>
-          </h3>
+          <BackButton />
           <div className={'single-post'}>
             <div className='single-post__image' style={{ backgroundImage: 'url(' + post.cover + ')' }}></div>
             <div className='single-post__content'>

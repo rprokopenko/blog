@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { getPosts } from '../redux/actions/getPosts';
-import { Post, Loader, NoPosts } from '../components';
+import { Post, Loader, NotFound } from '../components';
 
 const Main = () => {
   let { categoryName } = useParams();
@@ -25,7 +25,7 @@ const Main = () => {
       <div className='two-post'>
         {isLoaded ? (
           filterPosts.length === 0 ? (
-            <NoPosts />
+            <NotFound />
           ) : (
             filterPosts.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;

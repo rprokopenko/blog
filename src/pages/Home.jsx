@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Post, Loader, NoPosts } from '../components';
+import { Post, Loader, NotFound } from '../components';
 import { getPosts } from '../redux/actions/getPosts';
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
       <h3 className='title'>Latest posts</h3>
       {isLoaded ? (
         postsByLatest.length === 0 ? (
-          <NoPosts />
+          <NotFound />
         ) : (
           <>
             <div className='large-post'>
@@ -42,7 +42,7 @@ const Home = () => {
       <div className='two-post'>
         {isLoaded ? (
           postsByPopular.length === 0 ? (
-            <NoPosts />
+            <NotFound />
           ) : (
             postsByPopular.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;
