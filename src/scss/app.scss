@@ -1,4 +1,5 @@
 @import 'variables';
+
 @import 'libs/normalize';
 
 @import 'pages/all';
@@ -12,6 +13,7 @@ body {
   width: 100%;
   height: 100%;
   max-width: 1133px;
+
   margin: 0 auto;
 
   .content {

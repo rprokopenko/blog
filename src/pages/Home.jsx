@@ -22,7 +22,7 @@ const Home = () => {
       <h3 className='title'>Latest posts</h3>
       {isLoaded ? (
         postsByLatest.length === 0 ? (
-          <NotFound />
+          <NotFound text='No posts :(' />
         ) : (
           <>
             <div className='large-post'>
@@ -42,7 +42,7 @@ const Home = () => {
       <div className='two-post'>
         {isLoaded ? (
           postsByPopular.length === 0 ? (
-            <NotFound />
+            <NotFound text='No posts :(' />
           ) : (
             postsByPopular.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;

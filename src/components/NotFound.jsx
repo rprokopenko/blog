@@ -1,13 +1,13 @@
 import React from 'react';
 import { BackButton } from '.';
 
-const NotFound = () => {
+const NotFound = ({ text = '404: Not Found', backButtonType = false }) => {
   return (
     <>
-      <BackButton />
+      {backButtonType ? <BackButton /> : ''}
       <div className='no-results'>
         <div className='content'>
-          <h2 className='title'>404: Not Found</h2>
+          <h2 className='title'>{text}</h2>
         </div>
       </div>
     </>

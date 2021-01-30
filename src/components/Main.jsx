@@ -25,7 +25,7 @@ const Main = () => {
       <div className='two-post'>
         {isLoaded ? (
           filterPosts.length === 0 ? (
-            <NotFound />
+            <NotFound text='No posts :(' />
           ) : (
             filterPosts.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;

@@ -20,7 +20,7 @@ const AllPosts = () => {
       <div className='two-post'>
         {isLoaded ? (
           posts.length === 0 ? (
-            <NotFound />
+            <NotFound text='No posts :(' />
           ) : (
             posts.map((post) => {
               return <Post key={post.id} id={post.id} {...post.data} />;

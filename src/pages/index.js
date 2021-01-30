@@ -19,7 +19,9 @@ const Public = () => {
                 <Route path='/category/:categoryName' component={Main} exact />
                 <Route path='/post/:id' component={SinglePost} exact />
 
-                <Route path='*' component={NotFound} />
+                <Route path='*'>
+                  <NotFound backButtonType={true} />
+                </Route>
               </Switch>
             </div>
             <div className='column'>
