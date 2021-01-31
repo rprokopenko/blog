@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications';
 
 import Public from './pages';
 import Private from './pages/admin';
@@ -11,6 +12,7 @@ const App = () => {
         <Route path='/admin' component={Private} />
         <Route path='/' component={Public} />
       </Switch>
+      <NotificationContainer />
     </>
   );
 };

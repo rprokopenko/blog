@@ -22,6 +22,7 @@
 
     a {
       color: #555555;
+      margin-right: 32px;
     }
 
     a:hover {
@@ -29,7 +30,7 @@
     }
 
     a:last-child {
-      margin-left: 32px;
+      margin-right: 0;
     }
 
     .active {

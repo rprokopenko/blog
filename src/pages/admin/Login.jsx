@@ -1,8 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 
 import { loginUser } from '..//../redux/actions/loginUser';
+
+import { logIn } from '../../localStorage';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
@@ -19,9 +22,10 @@ const Login = () => {
       let user = await logInUserAction(email, password);
 
       if (user) {
-        localStorage.setItem('auth', true);
+        logIn();
         setRedirect(true);
       } else {
+        NotificationManager.error('Logging Error');
       }
     }
   };
@@ -47,8 +51,3 @@ const Login = () => {
 };
 
 export default Login;
-
-export const isLogin = () => {
-  if (localStorage.getItem('auth')) return true;
-  return false;
-};

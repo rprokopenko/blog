@@ -7,6 +7,7 @@ import store from './redux/store';
 
 import App from './App';
 
+import 'react-notifications/lib/notifications.css';
 import './scss/app.scss';
 
 ReactDOM.render(

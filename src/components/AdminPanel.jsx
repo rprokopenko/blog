@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { isLogin, logOut } from '../localStorage';
 
 const AdminPanel = () => {
+  const [state, setState] = React.useState(false);
+
+  React.useEffect(() => setState(isLogin()), []);
+
+  const handleLogout = () => {
+    logOut();
+    setState(false);
+  };
+
   return (
     <div className='admin-panel'>
       <div className='container'>
@@ -79,7 +89,9 @@ const AdminPanel = () => {
                 </clipPath>
               </defs>
             </svg>
-            <Link to='/logout'>Logout</Link>
+            <Link onClick={() => handleLogout()} to='/'>
+              Logout
+            </Link>
           </div>
         </div>
       </div>
