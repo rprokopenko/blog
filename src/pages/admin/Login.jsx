@@ -25,7 +25,7 @@ const Login = () => {
         logIn();
         setRedirect(true);
       } else {
-        NotificationManager.error('Logging Error');
+        NotificationManager.error('Login Failed');
       }
     }
   };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
+import { isLogin } from '../localStorage';
+
 import logoSvg from '../assets/img/logo.svg';
 
 export const ActiveLink = ({ label, to, activeOnlyWhenExact }) => {
@@ -28,6 +30,7 @@ const Header = () => {
         <div className='header__nav'>
           <ActiveLink activeOnlyWhenExact={true} to='/' label='Home' />
           <ActiveLink to='/allposts' label='All Posts' />
+          {isLogin() ? <ActiveLink to='/admin' label='Admin Panel' /> : ''}
         </div>
       </div>
     </div>

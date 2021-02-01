@@ -23,7 +23,7 @@ const AdminPanel = () => {
                 fill='#555555'
               />
             </svg>
-            <Link to='/allposts'>Add new Post</Link>
+            <Link to='/admin/new-post'>Add new Post</Link>
           </div>
           <div className='nav__link'>
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>

@@ -1,9 +1,8 @@
-import { LOGIN_USER, SET_LOADED } from '../types';
+import { LOGIN_USER } from '../types';
 
 const initialState = {
   user: {},
   isLogin: false,
-  isLoaded: false,
 };
 
 const loginUser = (state = initialState, action) => {
@@ -13,13 +12,6 @@ const loginUser = (state = initialState, action) => {
         ...state,
         user: action.payload,
         isLogin: true,
-        isLoaded: true,
-      };
-
-    case SET_LOADED:
-      return {
-        ...state,
-        isLoaded: action.payload,
       };
 
     default:

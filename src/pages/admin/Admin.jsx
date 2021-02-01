@@ -1,6 +1,7 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import { AdminPanel, Header } from '../../components';
+import { AdminPanel, CreatePost, Header } from '../../components';
 
 const Admin = () => {
   return (
@@ -9,7 +10,10 @@ const Admin = () => {
       <div className='wrapper'>
         <div className='content'>
           <h3 className='title'>Admin Panel</h3>
-          <AdminPanel />
+          <Switch>
+            <Route path='/new-post' component={CreatePost} />
+            <Route path='/admin' component={AdminPanel} />
+          </Switch>
         </div>
       </div>
     </>
