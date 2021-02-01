@@ -1,22 +1,10 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { isLogin } from '../localStorage';
 
 import logoSvg from '../assets/img/logo.svg';
-
-export const ActiveLink = ({ label, to, activeOnlyWhenExact }) => {
-  let match = useRouteMatch({
-    path: to,
-    exact: activeOnlyWhenExact,
-  });
-
-  return (
-    <Link className={match ? 'active' : ''} to={to}>
-      {label}
-    </Link>
-  );
-};
+import { ActiveLink } from '../hooks/ActiveLink';
 
 const Header = () => {
   return (

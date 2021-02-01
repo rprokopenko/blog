@@ -9,10 +9,9 @@ const Admin = () => {
       <Header />
       <div className='wrapper'>
         <div className='content'>
-          <h3 className='title'>Admin Panel</h3>
           <Switch>
-            <Route path='/new-post' component={CreatePost} />
-            <Route path='/admin' component={AdminPanel} />
+            <Route path='/admin' component={AdminPanel} exact />
+            <Route path='/admin/new-post' component={CreatePost} exact />
           </Switch>
         </div>
       </div>

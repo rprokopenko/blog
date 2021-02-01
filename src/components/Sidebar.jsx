@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActiveLink } from './Header';
+import { ActiveLink } from '../hooks/ActiveLink';
 
 import caretDownSvg from '../assets/img/caret-down.svg';
 
