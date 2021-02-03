@@ -53,25 +53,23 @@ class Firebase {
     const postData = post.data();
     return postData;
   }
-
   async createPost(post) {
-    const storageRef = firebase.storage().ref();
+    const storage = firebase.storage();
 
-    const storageChild = storageRef.child(post.cover.name);
-    const postCover = await storageChild.put(post.cover);
-    const downloadURL = await storageChild.getDownloadURL();
-    const fileRef = postCover.ref.location.path;
+    const ref = storage.ref(post.cover.name);
+
+    const postCover = await ref.put(post.cover);
+
+    const downloadURL = await postCover.task.snapshot.ref.getDownloadURL();
 
     let newPost = {
       cover: downloadURL,
-      fileref: fileRef,
       title: post.title,
       category: post.category,
       content: post.content,
-
       likes: 0,
       views: 0,
-      //time: firebase.firestore.Timestamp.now(),
+      time: firebase.firestore.Timestamp.now(),
     };
 
     const firestorePost = await firebase

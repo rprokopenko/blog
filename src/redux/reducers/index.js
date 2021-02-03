@@ -8,8 +8,8 @@ import createPost from './createPost';
 const rootReducer = combineReducers({
   getPosts: getPosts,
   getPost: getPost,
-  createPost: createPost,
   loginUser: loginUser,
+  createPost: createPost,
 });
 
 export default rootReducer;

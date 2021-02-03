@@ -31,11 +31,12 @@ const CreatePost = () => {
 
   const addPost = async (e) => {
     e.preventDefault();
+
     let post = {
+      cover,
       title,
       category,
       content,
-      cover,
     };
 
     await createPostAction(post);
@@ -43,7 +44,7 @@ const CreatePost = () => {
   };
 
   if (redirect) {
-    return <Redirect to='/' />;
+    return <Redirect to='/admin' />;
   }
 
   return (
