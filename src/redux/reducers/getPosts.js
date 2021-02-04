@@ -1,7 +1,9 @@
-import { GET_POSTS, SET_LOADED } from '../types';
+import { GET_POSTS, GET_POSTS_BY_LATEST, GET_POSTS_BY_POPULAR, SET_LOADED } from '../types';
 
 const initialState = {
   posts: [],
+  postsByLatest: [],
+  postsByPopular: [],
   isLoaded: false,
 };
 
@@ -11,6 +13,20 @@ const getPosts = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
+        isLoaded: true,
+      };
+
+    case GET_POSTS_BY_LATEST:
+      return {
+        ...state,
+        postsByLatest: action.payload,
+        isLoaded: true,
+      };
+
+    case GET_POSTS_BY_POPULAR:
+      return {
+        ...state,
+        postsByPopular: action.payload,
         isLoaded: true,
       };
 

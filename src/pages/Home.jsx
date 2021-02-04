@@ -2,19 +2,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Post, Loader, NotFound } from '../components';
-import { getPosts } from '../redux/actions/getPosts';
+import { getPostsByLatests, getPostsByPopular } from '../redux/actions/getPosts';
 
 const Home = () => {
-  const posts = useSelector(({ getPosts }) => getPosts.posts);
+  const { postsByLatest, postsByPopular } = useSelector(({ getPosts }) => getPosts);
   const isLoaded = useSelector(({ getPosts }) => getPosts.isLoaded);
 
   const dispatch = useDispatch();
 
-  const postsByLatest = posts.sort((a, b) => a.data.time.seconds - b.data.time.seconds).slice(0, 3);
-  const postsByPopular = posts.sort((a, b) => b.data.likes - a.data.likes).slice(0, 4);
+  /*const postsByLatest = posts.sort((a, b) => a.data.time.seconds - b.data.time.seconds).slice(0, 3);
+  const postsByPopular = posts.sort((a, b) => b.data.likes - a.data.likes).slice(0, 4);*/
 
   React.useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPostsByLatests());
+    dispatch(getPostsByPopular());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

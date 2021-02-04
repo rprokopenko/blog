@@ -40,7 +40,8 @@ class Firebase {
   async getPosts() {
     let postsArray = [];
 
-    const posts = await this.db.collection('posts').orderBy('views', 'desc').get();
+    const posts = await this.db.collection('posts').orderBy('time', 'desc').get();
+
     posts.forEach((doc) => {
       postsArray.push({ id: doc.id, data: doc.data() });
     });
@@ -48,11 +49,36 @@ class Firebase {
     return postsArray;
   }
 
+  async getPostsByLatest() {
+    let postsByLatestArray = [];
+
+    const postsByLatest = await this.db.collection('posts').orderBy('time', 'desc').limit(3).get();
+
+    postsByLatest.forEach((doc) => {
+      postsByLatestArray.push({ id: doc.id, data: doc.data() });
+    });
+
+    return postsByLatestArray;
+  }
+
+  async getPostsByPopular() {
+    let postsByPopularArray = [];
+
+    const postsByPopular = await this.db.collection('posts').orderBy('views', 'desc').limit(4).get();
+
+    postsByPopular.forEach((doc) => {
+      postsByPopularArray.push({ id: doc.id, data: doc.data() });
+    });
+
+    return postsByPopularArray;
+  }
+
   async getPost(postid) {
     const post = await firebase.firestore().collection('posts').doc(postid).get();
     const postData = post.data();
     return postData;
   }
+
   async createPost(post) {
     const storage = firebase.storage();
 
