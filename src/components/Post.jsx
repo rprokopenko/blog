@@ -1,20 +1,43 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { isLogin } from '../localStorage';
+import { deletePost } from '../redux/actions/deletePost';
 
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
 
-const Post = ({ id, cover, category, title, content, likes, views, isFirst = false }) => {
+const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+  const deletePostAction = (id, fileRef) => dispatch(deletePost(id, fileRef));
+
+  const deleteCurrentPost = async () => {
+    await deletePostAction(id, fileRef);
+    history.go(0);
+  };
 
   return (
     <div className={!isMobile && isFirst ? 'first-post' : 'post'}>
       <div className='post__image' style={{ backgroundImage: 'url(' + cover + ')' }}></div>
       <div className='post__content'>
-        <h4 className='post__category'>
-          <Link to={'/category/' + category}>{'# ' + category}</Link>
-        </h4>
+        <div className='post__category'>
+          <h4>
+            <Link to={'/category/' + category}>{'# ' + category}</Link>
+          </h4>
+          <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
+            <button id='button__edit'>Edit</button>
+            <button id='button__delete' onClick={(e) => deleteCurrentPost()}>
+              Delete
+            </button>
+          </div>
+        </div>
+
         <h2 className='post__title'>
           <Link to={'/post/' + id}>{title}</Link>
         </h2>

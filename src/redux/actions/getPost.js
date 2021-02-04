@@ -8,6 +8,7 @@ export const setLoaded = (payload) => ({
 
 export const getPost = (postid) => {
   return async function (dispatch) {
+    dispatch({ type: SET_LOADED, payload: false });
     const postData = await firebase.getPost(postid);
     dispatch({ type: GET_POST, payload: postData });
   };

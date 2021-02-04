@@ -1,12 +1,12 @@
-import { CREATE_POST } from '../types';
+import { DELETE_POST } from '../types';
 
 const initialState = {
   post: {},
 };
 
-const createPost = (state = initialState, action) => {
+const deletePost = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_POST:
+    case DELETE_POST:
       return {
         ...state,
         post: action.payload,
@@ -18,4 +18,4 @@ const createPost = (state = initialState, action) => {
   }
 };
 
-export default createPost;
+export default deletePost;

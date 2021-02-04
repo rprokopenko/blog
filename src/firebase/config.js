@@ -64,6 +64,7 @@ class Firebase {
 
     let newPost = {
       cover: downloadURL,
+      fileRef: post.cover.name,
       title: post.title,
       category: post.category,
       content: post.content,
@@ -81,6 +82,26 @@ class Firebase {
       });
 
     return firestorePost;
+  }
+
+  async deletePost(postid, fileref) {
+    const storage = firebase.storage().ref();
+
+    await storage
+      .child(fileref)
+      .delete()
+      .catch((err) => {
+        console.log(err);
+      });
+
+    const post = await firebase
+      .firestore()
+      .collection('posts')
+      .doc(postid)
+      .delete()
+      .catch((err) => console.log(err));
+
+    return post;
   }
 }
 
