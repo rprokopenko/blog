@@ -4,6 +4,7 @@ import { NotificationContainer } from 'react-notifications';
 
 import Public from './pages';
 import Private from './pages/admin';
+import { Modal } from './components';
 
 const App = () => {
   return (

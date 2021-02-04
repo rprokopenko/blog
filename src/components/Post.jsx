@@ -8,6 +8,7 @@ import { deletePost } from '../redux/actions/deletePost';
 
 import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
+import { Modal } from '.';
 
 const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
@@ -17,43 +18,53 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
   const dispatch = useDispatch();
   const deletePostAction = (id, fileRef) => dispatch(deletePost(id, fileRef));
 
+  const [isOpen, setIsOpen] = React.useState(false);
+  React.useEffect(() => {
+    document.body.classList.toggle('modal-open');
+    document.body.before({ display: 'block' });
+  }, [isOpen]);
+
   const deleteCurrentPost = async () => {
+    setIsOpen(!isOpen);
     await deletePostAction(id, fileRef);
-    history.go(0);
+    //history.go(0);
   };
 
   return (
-    <div className={!isMobile && isFirst ? 'first-post' : 'post'}>
-      <div className='post__image' style={{ backgroundImage: 'url(' + cover + ')' }}></div>
-      <div className='post__content'>
-        <div className='post__category'>
-          <h4>
-            <Link to={'/category/' + category}>{'# ' + category}</Link>
-          </h4>
-          <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
-            <button id='button__edit'>Edit</button>
-            <button id='button__delete' onClick={(e) => deleteCurrentPost()}>
-              Delete
-            </button>
+    <>
+      {isOpen ? <Modal /> : ''}
+      <div className={!isMobile && isFirst ? 'first-post' : 'post'}>
+        <div className='post__image' style={{ backgroundImage: 'url(' + cover + ')' }}></div>
+        <div className='post__content'>
+          <div className='post__category'>
+            <h4>
+              <Link to={'/category/' + category}>{'# ' + category}</Link>
+            </h4>
+            <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
+              <button id='button__edit'>Edit</button>
+              <button id='button__delete' onClick={(e) => deleteCurrentPost()}>
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
 
-        <h2 className='post__title'>
-          <Link to={'/post/' + id}>{title}</Link>
-        </h2>
-        <p className='post__text'>{content}</p>
-        <div className='post__footer'>
-          <div className='likes'>
-            <img src={likeSvg} alt='like' />
-            <p>{likes}</p>
-          </div>
-          <div className='views'>
-            <img src={viewSvg} alt='view' />
-            <p>{views}</p>
+          <h2 className='post__title'>
+            <Link to={'/post/' + id}>{title}</Link>
+          </h2>
+          <p className='post__text'>{content}</p>
+          <div className='post__footer'>
+            <div className='likes'>
+              <img src={likeSvg} alt='like' />
+              <p>{likes}</p>
+            </div>
+            <div className='views'>
+              <img src={viewSvg} alt='view' />
+              <p>{views}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

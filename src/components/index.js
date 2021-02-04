@@ -9,3 +9,4 @@ export { default as Loader } from './Loader';
 
 export { default as AdminPanel } from './AdminPanel';
 export { default as CreatePost } from './CreatePost';
+export { default as Modal } from './Modal';
