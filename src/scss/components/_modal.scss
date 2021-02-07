@@ -1,79 +1,102 @@
-.modal {
-  position: absolute;
+.modal-overlay {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  top: 50%;
-  left: 50%;
-  z-index: 102;
-  transform: translate(-50%, -50%);
+  .modal {
+    position: absolute;
 
-  background: #ffffff;
-  border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    z-index: 102;
+    transform: translate(-50%, -50%);
 
-  .container {
-    padding: 48px 70px;
+    background: #ffffff;
+    border-radius: 15px;
 
-    h2 {
-      font-weight: 500;
-      font-size: 30px;
-      line-height: 37px;
+    .container {
+      padding: 48px 70px;
 
-      color: #555555;
+      h2 {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 37px;
 
-      margin-bottom: 30px;
+        color: #555555;
+
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #555555;
+
+        margin-bottom: 40px;
+      }
     }
 
-    p {
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 20px;
+    &__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      color: #555555;
+      button {
+        min-width: 153px;
+        padding: 15px 0 15px 0;
 
-      margin-bottom: 40px;
-    }
-  }
+        cursor: pointer;
+        border: 0;
+        background-color: inherit;
+        border-radius: 31px;
 
-  &__buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
 
-    button {
-      min-width: 153px;
-      padding: 15px 0 15px 0;
+        color: #ffffff;
 
-      cursor: pointer;
-      border: 0;
-      background-color: inherit;
-      border-radius: 31px;
+        transition: linear 0.2s;
+      }
 
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 24px;
+      #cancel {
+        background: #555555;
+        border: 1px solid #555555;
+      }
 
-      color: #ffffff;
+      #cancel:hover {
+        color: #555555;
+        background: inherit;
+      }
 
-      transition: linear 0.2s;
-    }
+      #edit {
+        background: #119dc8;
+        border: 1px solid #119dc8;
+      }
 
-    #cancel {
-      background: #555555;
-      border: 1px solid #555555;
-    }
+      #edit:hover {
+        color: #119dc8;
+        background: inherit;
+      }
 
-    #cancel:hover {
-      color: #555555;
-      background: inherit;
-    }
+      #delete {
+        background: #cc0012;
+        border: 1px solid #cc0012;
+      }
 
-    #delete {
-      background: #cc0012;
-      border: 1px solid #cc0012;
-    }
-
-    #delete:hover {
-      color: #cc0012;
-      background: inherit;
+      #delete:hover {
+        color: #cc0012;
+        background: inherit;
+      }
     }
   }
 }

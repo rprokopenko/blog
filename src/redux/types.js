@@ -7,3 +7,6 @@ export const SET_LOADED = 'SET_LOADED';
 export const LOGIN_USER = 'LOGIN_USER';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
+
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
