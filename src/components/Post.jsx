@@ -1,28 +1,19 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { isLogin } from '../localStorage';
-import { deletePost } from '../redux/actions/deletePost';
 import { openModal } from '../redux/actions/modal';
 
 const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
 
-  const history = useHistory();
-
   const dispatch = useDispatch();
-  const deletePostAction = (id, fileRef) => dispatch(deletePost(id, fileRef));
 
-  const deleteCurrentPost = () => {
-    dispatch(openModal({ modalProps: { isEditType: false, isDeleteType: true, postId: id } }));
+  const deletePost = () => {
+    dispatch(openModal({ isType: false, modalProps: { postId: id, fileRef: fileRef } }));
   };
-
-  /* const deleteCurrentPost = async () => {
-    //await deletePostAction(id, fileRef);
-    //history.go(0);
-  };*/
 
   return (
     <>
@@ -35,7 +26,7 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
             </h4>
             <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
               <button id='button__edit'>Edit</button>
-              <button id='button__delete' onClick={(e) => deleteCurrentPost()}>
+              <button id='button__delete' onClick={(e) => deletePost()}>
                 Delete
               </button>
             </div>

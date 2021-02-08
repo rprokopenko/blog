@@ -1,7 +1,8 @@
 import { SHOW_MODAL, HIDE_MODAL } from '../types';
 
 const initialState = {
-  modalProps: { isEditType: false, isDeleteType: false, postId: null },
+  isType: false,
+  modalProps: { postId: null, fileRef: null },
   isShow: false,
 };
 
