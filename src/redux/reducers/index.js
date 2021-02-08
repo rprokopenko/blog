@@ -6,6 +6,7 @@ import loginUser from './loginUser';
 import createPost from './createPost';
 import deletePost from './deletePost';
 import modal from './modal';
+import updatePost from './updatePost';
 
 const rootReducer = combineReducers({
   getPosts: getPosts,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   createPost: createPost,
   deletePost: deletePost,
   modal: modal,
+  updatePost: updatePost,
 });
 
 export default rootReducer;

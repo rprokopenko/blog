@@ -12,6 +12,9 @@ const Admin = () => {
           <Switch>
             <Route path='/admin' component={AdminPanel} exact />
             <Route path='/admin/new-post' component={CreatePost} exact />
+            <Route path='/admin/edit-post' exact>
+              <CreatePost isEdit={true} />
+            </Route>
           </Switch>
         </div>
       </div>

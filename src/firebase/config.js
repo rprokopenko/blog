@@ -81,11 +81,8 @@ class Firebase {
 
   async createPost(post) {
     const storage = firebase.storage();
-
     const ref = storage.ref(post.cover.name);
-
     const postCover = await ref.put(post.cover);
-
     const downloadURL = await postCover.task.snapshot.ref.getDownloadURL();
 
     let newPost = {
@@ -108,6 +105,57 @@ class Firebase {
       });
 
     return firestorePost;
+  }
+
+  async updatePost(postid, postData) {
+    console.log('postData', postData);
+    if (postData['cover']) {
+      const storageRef = firebase.storage().ref();
+      const storage = firebase.storage();
+      const ref = storage.ref(postData.cover.name);
+      const postCover = await ref.put(postData.cover);
+      const downloadURL = await postCover.task.snapshot.ref.getDownloadURL();
+
+      //delete the old cover
+      await storageRef
+        .child(postData['oldcover'])
+        .delete()
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log('image deleted successfully');
+
+      let updatedPost = {
+        cover: downloadURL,
+        fileRef: postData.cover.name,
+        title: postData.title,
+        category: postData.category,
+        content: postData.content,
+        //time: firebase.firestore.Timestamp.now(),
+      };
+
+      const post = await firebase
+        .firestore()
+        .collection('posts')
+        .doc(postid)
+        .set(updatedPost, { merge: true })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log('post updated successfully');
+      return post;
+    } else {
+      const post = await firebase
+        .firestore()
+        .collection('posts')
+        .doc(postid)
+        .set(postData, { merge: true })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log('post updated successfully');
+      return post;
+    }
   }
 
   async deletePost(postid, fileref) {

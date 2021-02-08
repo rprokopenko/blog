@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { isLogin } from '../localStorage';
@@ -8,12 +8,17 @@ import { openModal } from '../redux/actions/modal';
 
 const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
+  const [isEditRedirect, setIsEditRedirect] = React.useState(false);
 
   const dispatch = useDispatch();
 
   const deletePost = () => {
     dispatch(openModal({ isType: false, modalProps: { postId: id, fileRef: fileRef } }));
   };
+
+  if (isEditRedirect) {
+    return <Redirect to='/admin/edit-post' />;
+  }
 
   return (
     <>
@@ -25,8 +30,10 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
               <Link to={'/category/' + category}>{'# ' + category}</Link>
             </h4>
             <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
-              <button id='button__edit'>Edit</button>
-              <button id='button__delete' onClick={(e) => deletePost()}>
+              <button id='button__edit' onClick={() => setIsEditRedirect(true)}>
+                Edit
+              </button>
+              <button id='button__delete' onClick={() => deletePost()}>
                 Delete
               </button>
             </div>

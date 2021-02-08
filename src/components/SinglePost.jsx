@@ -11,14 +11,14 @@ import likeSvg from '../assets/img/like.svg';
 import viewSvg from '../assets/img/view.svg';
 
 const SinglePost = (props) => {
-  const [postid, setPostId] = React.useState('');
+  //const [postid, setPostId] = React.useState('');
   const post = useSelector(({ getPost }) => getPost.post);
   const isLoaded = useSelector(({ getPost }) => getPost.isLoaded);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    setPostId(props.match.params.id);
+    //setPostId(props.match.params.id);
     dispatch(getPost(props.match.params.id));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 
 import { closeModal } from '../redux/actions/modal';
 import { deletePost } from '../redux/actions/deletePost';
@@ -17,6 +18,7 @@ const Modal = () => {
   const deleteCurrentPost = async () => {
     await deletePostAction(postId, fileRef);
     history.go(0);
+    NotificationManager.success('Post delete!');
   };
 
   const closeModalAction = () => {

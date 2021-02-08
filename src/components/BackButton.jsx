@@ -6,7 +6,12 @@ const BackButton = () => {
   return (
     <>
       <h3 className='title'>
-        <button onClick={() => history.goBack()}>Back</button>
+        <button
+          onClick={() => {
+            history.goBack();
+          }}>
+          Back
+        </button>
       </h3>
     </>
   );

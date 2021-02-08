@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isLogin, logOut } from '../localStorage';
+import { logOut } from '../localStorage';
 
 const AdminPanel = () => {
-  const [state, setState] = React.useState(false);
-
-  React.useEffect(() => setState(isLogin()), []);
-
   const handleLogout = () => {
     logOut();
-    setState(false);
   };
 
   return (
