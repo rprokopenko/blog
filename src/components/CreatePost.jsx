@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 
 import { createPost } from '../redux/actions/createPost';
@@ -8,7 +8,7 @@ import { getPost } from '../redux/actions/getPost';
 
 import { BackButton, Loader } from '.';
 
-const CreatePost = (props, { isEdit = false }) => {
+const CreatePost = () => {
   const hiddenFileInput = React.useRef(null);
 
   const [title, setTitle] = React.useState('');
@@ -19,16 +19,23 @@ const CreatePost = (props, { isEdit = false }) => {
 
   const [redirect, setRedirect] = React.useState(false);
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [isEdit, setIsEdit] = React.useState(false);
 
   const post = useSelector(({ getPost }) => getPost.post);
 
   const dispatch = useDispatch();
+  const getPostAction = (postid) => dispatch(getPost(postid));
   const createPostAction = (post) => dispatch(createPost(post));
   const updatePostAction = (postid, post) => dispatch(updatePost(postid, post));
 
+  const location = useLocation();
+
   React.useEffect(() => {
-    //setPostId(props.match.params.id);
-    dispatch(getPost(props.match.params.id));
+    console.log(location);
+    setIsEdit(location.state.isEdit);
+    dispatch(getPost(location.state.postId));
+    getPostAction(location.state.postId);
+    fillInput();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   //push name from input image to span
@@ -59,7 +66,11 @@ const CreatePost = (props, { isEdit = false }) => {
     setRedirect(true);
   };
 
-  const fillInput = () => {};
+  const fillInput = () => {
+    setTitle(post.title);
+    setCategory(post.category);
+    setContent(post.content);
+  };
 
   const updatePost = async (e) => {};
 

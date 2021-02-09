@@ -17,7 +17,8 @@ const Modal = () => {
 
   const deleteCurrentPost = async () => {
     await deletePostAction(postId, fileRef);
-    history.go(0);
+    //history.go(0);
+    history.push('/admin');
     NotificationManager.success('Post delete!');
   };
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import { AdminPanel, CreatePost, Header } from '../../components';
+import PrivateRoute from '../../hooks/PrivateRoute';
 
 const Admin = () => {
   return (
@@ -10,11 +11,9 @@ const Admin = () => {
       <div className='wrapper'>
         <div className='content'>
           <Switch>
-            <Route path='/admin' component={AdminPanel} exact />
-            <Route path='/admin/new-post' component={CreatePost} exact />
-            <Route path='/admin/edit-post' exact>
-              <CreatePost isEdit={true} />
-            </Route>
+            <PrivateRoute path='/admin' component={AdminPanel} exact />
+            <PrivateRoute path='/admin/new-post' component={CreatePost} exact />
+            <PrivateRoute path='/admin/edit-post' component={CreatePost} exact />
           </Switch>
         </div>
       </div>
