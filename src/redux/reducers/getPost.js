@@ -1,4 +1,4 @@
-import { GET_POST, SET_LOADED } from '../types';
+import { GET_POST, SET_LOADED_GET_POST } from '../types';
 
 const initialState = {
   post: {},
@@ -11,10 +11,10 @@ const getPost = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
-        isLoaded: true,
+        isLoaded: false,
       };
 
-    case SET_LOADED:
+    case SET_LOADED_GET_POST:
       return {
         ...state,
         isLoaded: action.payload,

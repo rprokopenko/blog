@@ -32,7 +32,6 @@ const Form = () => {
   const location = useLocation();
 
   React.useEffect(() => {
-    setIsEdit(false);
     if (location.state) {
       setIsEdit(location.state.isEdit);
       dispatch(getPost(location.state.postId));
@@ -72,10 +71,9 @@ const Form = () => {
   }
 
   const updatePost = async (e) => {};
-  //(isLoadedPostFill && isLoadedPostFill ? !isLoadedPostFill : null) || isLoaded
   return (
     <>
-      {isLoadedPostFill === false || isLoaded === true ? (
+      {(isEdit ? isLoadedPostFill : isLoaded) ? (
         <Loader />
       ) : (
         <>

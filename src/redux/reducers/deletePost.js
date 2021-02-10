@@ -10,7 +10,6 @@ const deletePost = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
-        isLoaded: true,
       };
 
     default:
