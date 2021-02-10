@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 
 import { createPost } from '../redux/actions/createPost';
@@ -8,7 +8,7 @@ import { getPost } from '../redux/actions/getPost';
 
 import { BackButton, Loader } from '.';
 
-const CreatePost = () => {
+const Form = (props) => {
   const hiddenFileInput = React.useRef(null);
 
   const [title, setTitle] = React.useState('');
@@ -18,25 +18,23 @@ const CreatePost = () => {
   const [stateFile, setStateFile] = React.useState(null);
 
   const [redirect, setRedirect] = React.useState(false);
-  const [isLoaded, setIsLoaded] = React.useState(false);
   const [isEdit, setIsEdit] = React.useState(false);
 
   const post = useSelector(({ getPost }) => getPost.post);
+  const isLoadedPostFill = useSelector(({ getPost }) => getPost.isLoaded);
+  const isLoaded = useSelector(({ createPost }) => createPost.isLoaded);
 
   const dispatch = useDispatch();
   const getPostAction = (postid) => dispatch(getPost(postid));
   const createPostAction = (post) => dispatch(createPost(post));
   const updatePostAction = (postid, post) => dispatch(updatePost(postid, post));
 
-  const location = useLocation();
-
   React.useEffect(() => {
-    console.log(location);
-    setIsEdit(location.state.isEdit);
-    dispatch(getPost(location.state.postId));
-    getPostAction(location.state.postId);
-    fillInput();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    //setId(props.location.state.postId);
+    //setIsEdit(props.location.state.isEdit);
+    console.log(props.match.params.id);
+    dispatch(getPost(props.match.params.id));
+  }, [props.match.params.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   //push name from input image to span
   const handleClick = (event) => {
@@ -51,7 +49,6 @@ const CreatePost = () => {
 
   const addPost = async (e) => {
     e.preventDefault();
-    setIsLoaded(true);
 
     let post = {
       cover,
@@ -62,14 +59,7 @@ const CreatePost = () => {
 
     await createPostAction(post);
     NotificationManager.success('Post create!');
-    setIsLoaded(false);
     setRedirect(true);
-  };
-
-  const fillInput = () => {
-    setTitle(post.title);
-    setCategory(post.category);
-    setContent(post.content);
   };
 
   const updatePost = async (e) => {};
@@ -78,9 +68,15 @@ const CreatePost = () => {
     return <Redirect to='/admin' />;
   }
 
+  const fillInput = () => {
+    setTitle(post.title);
+    setCategory(post.category);
+    setContent(post.content);
+  };
+
   return (
     <>
-      {isLoaded ? (
+      {isLoadedPostFill ? (
         <Loader />
       ) : (
         <>
@@ -116,7 +112,7 @@ const CreatePost = () => {
                 <div className='input'>
                   <label htmlFor='title'>Title</label>
                   <div className='input__content'>
-                    <input type='text' name='title' onChange={(e) => setTitle(e.target.value)} defaultValue={title} />
+                    <input type='text' name='title' onChange={(e) => setTitle(e.target.value)} defaultValue={post.title} />
                     <svg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
                       <path
                         d='M18.0256 8.53367C18.4071 8.91514 18.4071 9.5335 18.0256 9.91478L11.4742 16.4663C11.0928 16.8476 10.4746 16.8476 10.0931 16.4663L6.97441 13.3474C6.59294 12.9662 6.59294 12.3478 6.97441 11.9665C7.35569 11.585 7.97405 11.585 8.35533 11.9665L10.7836 14.3948L16.6445 8.53367C17.0259 8.15239 17.6443 8.15239 18.0256 8.53367ZM25 12.5C25 19.4094 19.4084 25 12.5 25C5.59063 25 0 19.4084 0 12.5C0 5.59063 5.59158 0 12.5 0C19.4094 0 25 5.59158 25 12.5ZM23.0469 12.5C23.0469 6.67019 18.329 1.95312 12.5 1.95312C6.67019 1.95312 1.95312 6.67095 1.95312 12.5C1.95312 18.3298 6.67095 23.0469 12.5 23.0469C18.3298 23.0469 23.0469 18.329 23.0469 12.5Z'
@@ -173,4 +169,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default Form;

@@ -18,6 +18,7 @@ const SinglePost = (props) => {
 
   React.useEffect(() => {
     dispatch(getPost(props.match.params.id));
+    console.log(props.match.params.id);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const formatedTime = (sec) => {

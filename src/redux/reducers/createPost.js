@@ -1,7 +1,8 @@
-import { CREATE_POST } from '../types';
+import { CREATE_POST, SET_LOADED } from '../types';
 
 const initialState = {
   post: {},
+  isLoaded: false,
 };
 
 const createPost = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const createPost = (state = initialState, action) => {
         ...state,
         post: action.payload,
         isLoaded: true,
+      };
+    case SET_LOADED:
+      return {
+        ...state,
+        isLoaded: action.payload,
       };
 
     default:

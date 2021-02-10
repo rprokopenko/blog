@@ -27,16 +27,9 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
               <Link to={'/category/' + category}>{'# ' + category}</Link>
             </h4>
             <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
-              <button
-                id='button__edit'
-                onClick={() => {
-                  history.push({
-                    pathname: '/admin/edit-post',
-                    state: { postId: id, isEdit: true },
-                  });
-                }}>
+              <Link id='button__edit' to={'/admin/edit-post/' + id}>
                 Edit
-              </button>
+              </Link>
               <button id='button__delete' onClick={() => deletePost()}>
                 Delete
               </button>
