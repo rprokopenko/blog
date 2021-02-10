@@ -2,7 +2,7 @@ import { GET_POST, SET_LOADED } from '../types';
 
 const initialState = {
   post: {},
-  isLoaded: true,
+  isLoaded: false,
 };
 
 const getPost = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const getPost = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
-        isLoaded: false,
+        isLoaded: true,
       };
 
     case SET_LOADED:

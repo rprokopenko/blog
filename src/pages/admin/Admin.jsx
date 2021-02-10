@@ -13,7 +13,7 @@ const Admin = () => {
           <Switch>
             <PrivateRoute path='/admin' component={AdminPanel} exact />
             <PrivateRoute path='/admin/new-post' component={Form} exact />
-            <PrivateRoute path='/admin/edit-post/:id' component={Form} exact />
+            <PrivateRoute path='/admin/edit-post' component={Form} exact />
           </Switch>
         </div>
       </div>
