@@ -1,4 +1,7 @@
 .post {
+  display: flex;
+
+  flex-direction: column;
   background: #ffffff;
   min-width: 360px;
   max-width: 360px;
@@ -6,7 +9,9 @@
   margin-bottom: 35px;
 
   &__image {
+    display: block;
     height: 200px;
+    width: 100%;
 
     background-color: #e2e2e2;
     background-size: cover;
@@ -14,112 +19,121 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: 30px;
-  }
 
-  &__category {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 15px;
-
-    a {
-      font-size: 12px;
-      font-weight: 500;
-      color: #868686;
-    }
-
-    a:hover {
-      border-bottom: 2px solid #868686;
-    }
-
-    button {
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 18px;
-      border: 0;
-      border-bottom: 2px solid #ffffff;
-      background-color: inherit;
-      cursor: pointer;
-    }
-
-    button:last-child {
-      margin-left: 15px;
-    }
-
-    #button__edit {
-      color: #119dc8;
-    }
-
-    #button__edit:hover {
-      border-bottom: 2px solid #119dc8;
-    }
-
-    #button__delete {
-      color: #cc0012;
-    }
-
-    #button__delete:hover {
-      border-bottom: 2px solid #cc0012;
-    }
-  }
-
-  &__title {
-    line-height: 24px;
-    margin-bottom: 15px;
-  }
-
-  &__title a {
-    font-size: 20px;
-    font-weight: 600;
-    color: #202020;
-  }
-
-  &__title a:hover {
-    border-bottom: 2px solid #202020;
-  }
-
-  &__text {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-
-    color: #868686;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 35px;
-
-    svg {
-      cursor: pointer;
-    }
-
-    p {
-      font-weight: 500;
-      font-size: 14px;
-
-      color: #868686;
-
-      margin-left: 6px;
-    }
-
-    .likes {
+    .post__category {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 15px;
+
+      a {
+        font-size: 12px;
+        font-weight: 500;
+        color: #868686;
+      }
+
+      a:hover {
+        border-bottom: 2px solid #868686;
+      }
+
+      button {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        border: 0;
+        border-bottom: 2px solid #ffffff;
+        background-color: inherit;
+        cursor: pointer;
+      }
+
+      button:last-child {
+        margin-left: 15px;
+      }
+
+      #button__edit {
+        color: #119dc8;
+      }
+
+      #button__edit:hover {
+        border-bottom: 2px solid #119dc8;
+      }
+
+      #button__delete {
+        color: #cc0012;
+      }
+
+      #button__delete:hover {
+        border-bottom: 2px solid #cc0012;
+      }
     }
 
-    .views {
+    .post__title {
+      line-height: 24px;
+      margin-bottom: 15px;
+    }
+
+    .post__title a {
+      font-size: 20px;
+      font-weight: 600;
+      color: #202020;
+    }
+
+    .post__title a:hover {
+      border-bottom: 2px solid #202020;
+    }
+
+    .post__text {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0%;
+      p {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: #868686;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        margin-bottom: 30px;
+      }
+    }
+
+    .post__footer {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+
+      svg {
+        cursor: pointer;
+      }
+
+      p {
+        font-weight: 500;
+        font-size: 14px;
+
+        color: #868686;
+
+        margin-left: 6px;
+      }
+
+      .likes {
+        display: flex;
+        align-items: center;
+      }
+
+      .views {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 }
@@ -133,6 +147,7 @@
   display: flex;
   max-width: none;
   flex-basis: 100%;
+  flex-direction: row;
 
   .post__image {
     height: auto;

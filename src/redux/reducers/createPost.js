@@ -11,7 +11,7 @@ const createPost = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
-        isLoaded: true,
+        isLoaded: false,
       };
     case SET_LOADED_CREATE_POST:
       return {

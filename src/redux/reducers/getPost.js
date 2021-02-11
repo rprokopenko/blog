@@ -2,7 +2,7 @@ import { GET_POST, SET_LOADED_GET_POST } from '../types';
 
 const initialState = {
   post: {},
-  isLoaded: false,
+  isLoaded: true,
 };
 
 const getPost = (state = initialState, action) => {

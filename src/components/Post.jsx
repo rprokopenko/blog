@@ -40,11 +40,12 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
               </button>
             </div>
           </div>
-
-          <h2 className='post__title'>
+          <div className='post__title'>
             <Link to={'/post/' + id}>{title}</Link>
-          </h2>
-          <p className='post__text'>{content}</p>
+          </div>
+          <div className='post__text'>
+            <p>{content}</p>
+          </div>
           <div className='post__footer'>
             <div className='likes'>
               <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
