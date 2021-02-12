@@ -123,7 +123,6 @@ class Firebase {
         .catch((err) => {
           console.log(err);
         });
-      console.log('image deleted successfully');
 
       let updatedPost = {
         cover: downloadURL,
@@ -142,7 +141,7 @@ class Firebase {
         .catch((err) => {
           console.log(err);
         });
-      console.log('post updated successfully');
+
       return post;
     } else {
       const post = await firebase
@@ -153,7 +152,7 @@ class Firebase {
         .catch((err) => {
           console.log(err);
         });
-      console.log('post updated successfully');
+
       return post;
     }
   }

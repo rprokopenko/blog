@@ -13,7 +13,6 @@ const Home = () => {
   React.useEffect(() => {
     dispatch(getPostsByLatests());
     dispatch(getPostsByPopular());
-    console.log(postsByLatest);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

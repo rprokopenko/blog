@@ -167,7 +167,9 @@
     }
 
     .post__text {
-      -webkit-line-clamp: 7;
+      p {
+        -webkit-line-clamp: 7;
+      }
     }
   }
 }
