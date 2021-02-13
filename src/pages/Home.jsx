@@ -5,8 +5,7 @@ import { Post, Loader, NotFound } from '../components';
 import { getPostsByLatests, getPostsByPopular } from '../redux/actions/getPosts';
 
 const Home = () => {
-  const { postsByLatest, postsByPopular } = useSelector(({ getPosts }) => getPosts);
-  const isLoaded = useSelector(({ getPosts }) => getPosts.isLoaded);
+  const { postsByLatest, postsByPopular, isLoadedByLatest, isLoadedByPopular } = useSelector(({ getPosts }) => getPosts);
 
   const dispatch = useDispatch();
 
@@ -18,7 +17,7 @@ const Home = () => {
   return (
     <>
       <h3 className='title'>Latest posts</h3>
-      {isLoaded ? (
+      {isLoadedByLatest ? (
         postsByLatest.length < 3 ? (
           <NotFound text='No posts :(' />
         ) : (
@@ -38,7 +37,7 @@ const Home = () => {
 
       <h3 className='title'>Popular posts</h3>
       <div className='two-post'>
-        {isLoaded ? (
+        {isLoadedByPopular ? (
           postsByPopular.length < 4 ? (
             <NotFound text='No posts :(' />
           ) : (

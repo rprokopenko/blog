@@ -1,7 +1,7 @@
 import firebase from '../../firebase/config';
 import { CREATE_POST, SET_LOADED_CREATE_POST } from '../types';
 
-export const setLoadedcreatePost = (payload) => ({
+export const setLoadedCreatePost = (payload) => ({
   type: SET_LOADED_CREATE_POST,
   payload,
 });

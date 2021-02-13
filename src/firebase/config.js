@@ -108,7 +108,6 @@ class Firebase {
   }
 
   async updatePost(postid, postData) {
-    console.log('postData', postData);
     if (postData['cover']) {
       const storageRef = firebase.storage().ref();
       const storage = firebase.storage();
