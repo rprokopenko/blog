@@ -31,8 +31,7 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
                 id='button__edit'
                 onClick={() => {
                   history.push({ pathname: '/admin/edit-post', state: { postId: id, isEdit: true } });
-                }}
-                to={'/admin/edit-post/' + id}>
+                }}>
                 Edit
               </button>
               <button id='button__delete' onClick={() => deletePost()}>

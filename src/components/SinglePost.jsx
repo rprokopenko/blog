@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import moment from 'moment';
 
 import { getPost } from '../redux/actions/getPost';
+import { openModal } from '../redux/actions/modal';
+import { isLogin } from '../localStorage';
 
 import { BackButton, Loader } from '../components';
 
@@ -16,9 +18,15 @@ const SinglePost = (props) => {
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   React.useEffect(() => {
     dispatch(getPost(props.match.params.id));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const deletePost = () => {
+    dispatch(openModal({ isType: false, modalProps: { postId: props.match.params.id, fileRef: post.fileRef } }));
+  };
 
   const formatedTime = (sec) => {
     const data = moment(sec * 1000).format('DD.MM.YYYY');
@@ -36,9 +44,23 @@ const SinglePost = (props) => {
           <div className={'single-post'}>
             <div className='single-post__image' style={{ backgroundImage: 'url(' + post.cover + ')' }}></div>
             <div className='single-post__content'>
-              <h4 className='single-post__category'>
+              <div className='single-post__category'>
                 <Link to={'/category/' + post.category}>{'# ' + post.category}</Link>
-              </h4>
+
+                <div style={isLogin() ? { display: 'block' } : { display: 'none' }}>
+                  <button
+                    id='button__edit'
+                    onClick={() => {
+                      history.push({ pathname: '/admin/edit-post', state: { postId: props.match.params.id, isEdit: true } });
+                    }}>
+                    Edit
+                  </button>
+                  <button id='button__delete' onClick={() => deletePost()}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+
               <h2 className='single-post__title'>{post.title}</h2>
               <h4 className='single-post__date'>{formatedTime(post.time.seconds)}</h4>
               <p className='single-post__text'>{post.content}</p>
