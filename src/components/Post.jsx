@@ -14,7 +14,7 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
   const dispatch = useDispatch();
 
   const deletePost = () => {
-    dispatch(openModal({ isType: false, modalProps: { postId: id, fileRef: fileRef } }));
+    dispatch(openModal({ modalProps: { isType: false, postId: id, fileRef: fileRef } }));
   };
 
   return (

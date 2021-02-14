@@ -4,7 +4,7 @@ import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 
 import { createPost } from '../redux/actions/createPost';
-import { updatePost } from '../redux/actions/updatePost';
+import { openModal } from '../redux/actions/modal';
 import { getPost } from '../redux/actions/getPost';
 
 import { BackButton, Loader } from '.';
@@ -29,7 +29,6 @@ const Form = () => {
   const dispatch = useDispatch();
   const getPostAction = (postid) => dispatch(getPost(postid));
   const createPostAction = (post) => dispatch(createPost(post));
-  const updatePostAction = (postid, post) => dispatch(updatePost(postid, post));
 
   const location = useLocation();
   const history = useHistory();
@@ -70,6 +69,10 @@ const Form = () => {
     setRedirect(true);
   };
 
+  if (redirect) {
+    return <Redirect to='/admin' />;
+  }
+
   const updateCurrentPost = async (e) => {
     e.preventDefault();
     const postUpdate = {
@@ -83,15 +86,8 @@ const Form = () => {
       postUpdate['oldcover'] = post.fileRef;
     }
 
-    await updatePostAction(location.state.postId, postUpdate);
-    NotificationManager.success('Post update!');
-
-    setRedirect(true);
+    dispatch(openModal({ modalProps: { isType: true, postId: location.state.postId, postUpdate: postUpdate } }));
   };
-
-  if (redirect) {
-    return <Redirect to='/admin' />;
-  }
 
   return (
     <>
