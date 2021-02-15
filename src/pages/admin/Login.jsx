@@ -2,24 +2,27 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
+import { useFormik } from 'formik';
 
 import { loginUser } from '..//../redux/actions/loginUser';
 
 import { logIn } from '../../localStorage';
+import { validate } from '../../utils/validation/validation';
 
 const Login = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
   const [redirect, setRedirect] = React.useState(false);
 
   const dispatch = useDispatch();
   const logInUserAction = (email, password) => dispatch(loginUser(email, password));
 
-  const login = async (e) => {
-    e.preventDefault();
-
-    if (email !== '' && password !== '') {
-      let user = await logInUserAction(email, password);
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validate,
+    onSubmit: async (values) => {
+      let user = await logInUserAction(values.email, values.password);
 
       if (user) {
         logIn();
@@ -27,8 +30,8 @@ const Login = () => {
       } else {
         NotificationManager.error('Login Failed');
       }
-    }
-  };
+    },
+  });
 
   if (redirect) {
     return <Redirect to='/admin' />;
@@ -38,12 +41,16 @@ const Login = () => {
     <div className='login'>
       <div className='container'>
         <h2>Log in Admin Panel</h2>
-        <form onSubmit={login}>
+        <form onSubmit={formik.handleSubmit}>
           <label htmlFor='email'>Email:</label>
-          <input type='email' name='email' onChange={(e) => setEmail(e.target.value)} />
+          {formik.errors.email ? <div className='login__error'>{formik.errors.email}</div> : null}
+          <input type='email' name='email' onChange={formik.handleChange} value={formik.values.email} />
+
           <label htmlFor='password'>Password:</label>
-          <input name='password' type='password' onChange={(e) => setPassword(e.target.value)} />
-          <input type='submit' value='Login' />
+          {formik.errors.password ? <div className='login__error'>{formik.errors.password}</div> : null}
+          <input name='password' type='password' onChange={formik.handleChange} value={formik.values.password} />
+
+          <input type='submit' value='Login' disabled={Object.keys(formik.errors).length !== 0 ? true : false} />
         </form>
       </div>
     </div>

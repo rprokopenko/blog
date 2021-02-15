@@ -36,6 +36,11 @@
         margin-bottom: 10px;
       }
 
+      .login__error {
+        color: #cc0012;
+        margin-bottom: 10px;
+      }
+
       input {
         height: 52px;
 
@@ -96,6 +101,13 @@
       }
 
       input[type='submit']:hover {
+        background: #ffffff;
+        color: #555555;
+      }
+
+      input[type='submit']:disabled {
+        cursor: not-allowed;
+
         background: #ffffff;
         color: #555555;
       }
