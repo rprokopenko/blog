@@ -1,4 +1,4 @@
-export const validate = (values) => {
+export const validateLogin = (values) => {
   const errors = {};
 
   if (!values.email) {
@@ -11,6 +11,20 @@ export const validate = (values) => {
     errors.password = 'Required';
   } else if (values.password.length <= 8) {
     errors.password = 'Must be more than 8 characters';
+  }
+
+  return errors;
+};
+
+export const validateForm = (values) => {
+  const errors = {};
+
+  if (values.title && !values.title) {
+    errors.title = 'Required';
+  } else if (values.title.length <= 12) {
+    errors.title = 'Must be more than 5 characters';
+  } else if (values.title === undefined) {
+    errors.title = 'Must be more than 5 characters';
   }
 
   return errors;

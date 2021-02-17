@@ -1,4 +1,4 @@
-.create-post {
+.form-post {
   width: 100%;
   background: #ffffff;
 
@@ -64,6 +64,8 @@
         display: flex;
         flex-direction: column;
 
+        margin-bottom: 35px;
+
         label {
           font-weight: normal;
           font-size: 16px;
@@ -74,11 +76,19 @@
           margin-bottom: 10px;
         }
 
+        &__error {
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 20px;
+
+          color: #cc0012;
+
+          margin-top: 10px;
+        }
+
         &__content {
           display: flex;
           align-items: center;
-
-          margin-bottom: 35px;
 
           input {
             width: 100%;
