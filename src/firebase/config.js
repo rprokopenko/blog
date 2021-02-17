@@ -74,7 +74,7 @@ class Firebase {
   }
 
   async getPost(postid) {
-    const post = await firebase.firestore().collection('posts').doc(postid).get();
+    const post = await this.db.collection('posts').doc(postid).get();
     const postData = post.data();
     return postData;
   }
@@ -174,6 +174,19 @@ class Firebase {
       .catch((err) => console.log(err));
 
     return post;
+  }
+
+  async getCategories() {
+    const categories = await this.db
+      .collection('categories')
+      .doc('ALL')
+      .get()
+      .then(function (doc) {
+        if (doc.exists) return doc.data();
+        return Promise.reject('No such document');
+      });
+
+    return categories;
   }
 }
 

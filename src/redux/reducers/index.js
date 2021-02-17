@@ -1,21 +1,23 @@
 import { combineReducers } from 'redux';
 
+import loginUser from './loginUser';
 import getPosts from './getPosts';
 import getPost from './getPost';
-import loginUser from './loginUser';
 import createPost from './createPost';
+import updatePost from './updatePost';
 import deletePost from './deletePost';
 import modal from './modal';
-import updatePost from './updatePost';
+import getCategories from './getCategories';
 
 const rootReducer = combineReducers({
+  loginUser: loginUser,
   getPosts: getPosts,
   getPost: getPost,
-  loginUser: loginUser,
   createPost: createPost,
+  updatePost: updatePost,
   deletePost: deletePost,
   modal: modal,
-  updatePost: updatePost,
+  getCategories: getCategories,
 });
 
 export default rootReducer;

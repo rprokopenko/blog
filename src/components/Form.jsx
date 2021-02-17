@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { createPost } from '../redux/actions/createPost';
 import { openModal } from '../redux/actions/modal';
 import { getPost } from '../redux/actions/getPost';
+import { getCategories } from '../redux/actions/getCategories';
 
 import { BackButton, Loader } from '.';
 
@@ -21,6 +22,7 @@ const Form = () => {
   const [isEdit, setIsEdit] = React.useState(false);
 
   const post = useSelector(({ getPost }) => getPost.post);
+  const categories = useSelector(({ getCategories }) => getCategories.categories.categories);
   const isLoadedPostFill = useSelector(({ getPost }) => getPost.isLoaded);
   const isLoadedAddPost = useSelector(({ createPost }) => createPost.isLoaded);
   const isLoadedEditPost = useSelector(({ updatePost }) => updatePost.isLoaded);
@@ -28,6 +30,8 @@ const Form = () => {
   const dispatch = useDispatch();
   const getPostAction = (postid) => dispatch(getPost(postid));
   const createPostAction = (post) => dispatch(createPost(post));
+
+  const getCategoriesAction = () => dispatch(getCategories());
 
   const location = useLocation();
   const history = useHistory();
@@ -39,6 +43,7 @@ const Form = () => {
     } else {
       setIsEdit(false);
     }
+    getCategoriesAction();
   }, [location]); // eslint-disable-line react-hooks/exhaustive-deps
 
   //push name from input image to span
@@ -104,7 +109,9 @@ const Form = () => {
                 }}
                 validationSchema={Yup.object({
                   title: Yup.string().min(15, 'Too Short!').max(45, 'Too Long!').required('Required'),
-                  category: Yup.string().oneOf(['CSS', 'JavaScript'], 'This category is not present in the database!').required('Required'),
+                  category: Yup.string()
+                    .oneOf(categories === undefined ? [] : categories, 'This category is not present in the database!')
+                    .required('Required'),
                   content: Yup.string().min(500, 'Too Short!').required('Required'),
                 })}
                 onSubmit={(values) => {
