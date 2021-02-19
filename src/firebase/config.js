@@ -73,12 +73,18 @@ class Firebase {
     return postsByPopularArray;
   }
 
-  async getPost(postid) {
+  async getPost(postid, isLike) {
     const postRef = await this.db.collection('posts').doc(postid);
 
     await postRef.update({
       views: firebase.firestore.FieldValue.increment(1),
     });
+
+    if (isLike) {
+      await postRef.update({
+        likes: firebase.firestore.FieldValue.increment(1),
+      });
+    }
 
     const post = await postRef.get();
     const postData = post.data();

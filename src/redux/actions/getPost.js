@@ -6,10 +6,10 @@ export const setLoadedGetPost = (payload) => ({
   payload,
 });
 
-export const getPost = (postid) => {
+export const getPost = (postid, isLike) => {
   return async function (dispatch) {
     dispatch({ type: SET_LOADED_GET_POST, payload: true });
-    const postData = await firebase.getPost(postid);
+    const postData = await firebase.getPost(postid, isLike);
     dispatch({ type: GET_POST, payload: postData });
   };
 };

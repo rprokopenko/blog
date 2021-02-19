@@ -2,6 +2,7 @@ import { GET_POST, SET_LOADED_GET_POST } from '../types';
 
 const initialState = {
   post: {},
+
   isLoaded: true,
 };
 
