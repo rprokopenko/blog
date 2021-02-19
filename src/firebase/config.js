@@ -74,7 +74,13 @@ class Firebase {
   }
 
   async getPost(postid) {
-    const post = await this.db.collection('posts').doc(postid).get();
+    const postRef = await this.db.collection('posts').doc(postid);
+
+    await postRef.update({
+      views: firebase.firestore.FieldValue.increment(1),
+    });
+
+    const post = await postRef.get();
     const postData = post.data();
     return postData;
   }

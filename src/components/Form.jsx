@@ -26,7 +26,6 @@ const Form = () => {
   const categories = useSelector(({ getCategories }) => getCategories.categories.categories);
   const isLoadedPostFill = useSelector(({ getPost }) => getPost.isLoaded);
   const isLoadedAddPost = useSelector(({ createPost }) => createPost.isLoaded);
-  const isLoadedEditPost = useSelector(({ updatePost }) => updatePost.isLoaded);
 
   const dispatch = useDispatch();
   const getPostAction = (postid) => dispatch(getPost(postid));
@@ -47,17 +46,10 @@ const Form = () => {
     getCategoriesAction();
   }, [location]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  //push name from input image to span
+  //ref to inputImage
   const handleClick = (event) => {
     hiddenFileInput.current.click();
   };
-
-  const handleChange = (event) => {
-    const fileUploaded = event.target.files[0];
-    setStateFile(fileUploaded.name);
-    setCover(fileUploaded);
-  };
-  /////
 
   const addPost = async (values) => {
     let post = {
