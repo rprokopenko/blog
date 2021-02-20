@@ -23,14 +23,14 @@ const SinglePost = (props) => {
   React.useEffect(() => {
     dispatch(getPost(props.match.params.id, isLike));
 
-    const votesFromLocalStorage = localStorage.getItem('likes') || [];
-    let previousVotes = [];
+    const likesFromLocalStorage = localStorage.getItem('likes') || [];
+    let previousLikes = [];
     try {
-      previousVotes = JSON.parse(votesFromLocalStorage);
+      previousLikes = JSON.parse(likesFromLocalStorage);
     } catch (error) {
       console.error(error);
     }
-    setLikedPost(previousVotes);
+    setLikedPost(previousLikes);
   }, [isLike]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const deletePost = () => {
@@ -44,9 +44,9 @@ const SinglePost = (props) => {
   };
 
   const handleDisablingOfVoting = (postId) => {
-    const previousVotes = likedPost;
-    previousVotes.push(postId);
-    setLikedPost(previousVotes);
+    const previousLikes = likedPost;
+    previousLikes.push(postId);
+    setLikedPost(previousLikes);
     localStorage.setItem('likes', JSON.stringify(likedPost));
   };
 

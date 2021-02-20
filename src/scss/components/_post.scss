@@ -114,6 +114,18 @@
         cursor: pointer;
       }
 
+      svg:hover {
+        transform: scale(1.1);
+      }
+
+      #svg__views {
+        cursor: default;
+      }
+
+      #svg__views:hover {
+        transform: none;
+      }
+
       p {
         font-weight: 500;
         font-size: 14px;
