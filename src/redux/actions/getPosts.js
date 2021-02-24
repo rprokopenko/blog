@@ -34,15 +34,17 @@ export const getPosts = () => {
 export const getPostsByLatests = () => {
   return async function (dispatch) {
     dispatch({ type: SET_LOADED_POSTS_BY_LATEST, payload: false });
-    const postsArray = await firebase.getPostsByLatest();
-    dispatch({ type: GET_POSTS_BY_LATEST, payload: postsArray });
+    const postsArray = await firebase.getPosts();
+    let postsByLatest = postsArray.sort((a, b) => b.data.time.seconds - a.data.time.seconds).slice(0, 3);
+    dispatch({ type: GET_POSTS_BY_LATEST, payload: postsByLatest });
   };
 };
 
 export const getPostsByPopular = () => {
   return async function (dispatch) {
     dispatch({ type: SET_LOADED_POSTS_BY_POPULAR, payload: false });
-    const postsArray = await firebase.getPostsByPopular();
-    dispatch({ type: GET_POSTS_BY_POPULAR, payload: postsArray });
+    const postsArray = await firebase.getPosts();
+    const postsByPopular = postsArray.sort((a, b) => b.data.likes - a.data.likes).slice(0, 4);
+    dispatch({ type: GET_POSTS_BY_POPULAR, payload: postsByPopular });
   };
 };

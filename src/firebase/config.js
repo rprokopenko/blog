@@ -49,7 +49,7 @@ class Firebase {
     return postsArray;
   }
 
-  async getPostsByLatest() {
+  /*async getPostsByLatest() {
     let postsByLatestArray = [];
 
     const postsByLatest = await this.db.collection('posts').orderBy('time', 'desc').limit(3).get();
@@ -71,10 +71,10 @@ class Firebase {
     });
 
     return postsByPopularArray;
-  }
+  }*/
 
-  async getPost(postid, isLike) {
-    const postRef = await this.db.collection('posts').doc(postid);
+  async getPost(postID, isLike) {
+    const postRef = await this.db.collection('posts').doc(postID);
 
     await postRef.update({
       views: firebase.firestore.FieldValue.increment(1),
@@ -89,6 +89,14 @@ class Firebase {
     const post = await postRef.get();
     const postData = post.data();
     return postData;
+  }
+
+  async setLikePost(postID) {
+    const postRef = await this.db.collection('posts').doc(postID);
+
+    await postRef.update({
+      likes: firebase.firestore.FieldValue.increment(1),
+    });
   }
 
   async createPost(post) {
@@ -119,7 +127,7 @@ class Firebase {
     return firestorePost;
   }
 
-  async updatePost(postid, postData) {
+  async updatePost(postID, postData) {
     if (postData['cover']) {
       const storageRef = firebase.storage().ref();
       const storage = firebase.storage();
@@ -147,7 +155,7 @@ class Firebase {
       const post = await firebase
         .firestore()
         .collection('posts')
-        .doc(postid)
+        .doc(postID)
         .set(updatedPost, { merge: true })
         .catch((err) => {
           console.log(err);
@@ -158,7 +166,7 @@ class Firebase {
       const post = await firebase
         .firestore()
         .collection('posts')
-        .doc(postid)
+        .doc(postID)
         .set(postData, { merge: true })
         .catch((err) => {
           console.log(err);
@@ -168,7 +176,7 @@ class Firebase {
     }
   }
 
-  async deletePost(postid, fileref) {
+  async deletePost(postID, fileref) {
     const storage = firebase.storage().ref();
 
     await storage
@@ -181,7 +189,7 @@ class Firebase {
     const post = await firebase
       .firestore()
       .collection('posts')
-      .doc(postid)
+      .doc(postID)
       .delete()
       .catch((err) => console.log(err));
 
