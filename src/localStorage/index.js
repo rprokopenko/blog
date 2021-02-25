@@ -10,6 +10,14 @@ export const logOut = () => {
   NotificationManager.success('Logout Successful!');
 };
 
+export const updateLikes = (postID) => {
+  let array = localStorage.getItem('likes');
+  let parsedArray = array ? JSON.parse(array) : [];
+  const newArray = [...parsedArray, postID];
+
+  return newArray;
+};
+
 export const isLogin = () => {
   if (localStorage.getItem('auth')) {
     return true;
