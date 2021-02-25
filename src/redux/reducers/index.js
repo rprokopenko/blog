@@ -8,6 +8,7 @@ import updatePost from './updatePost';
 import deletePost from './deletePost';
 import modal from './modal';
 import getCategories from './getCategories';
+import likePost from './likePost';
 
 const rootReducer = combineReducers({
   loginUser: loginUser,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   deletePost: deletePost,
   modal: modal,
   getCategories: getCategories,
+  likePost: likePost,
 });
 
 export default rootReducer;

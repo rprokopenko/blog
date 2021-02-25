@@ -7,6 +7,7 @@ import { isLogin } from '../localStorage';
 import { openModal } from '../redux/actions/modal';
 
 import firebase from '../firebase/config';
+import { likePost } from '../redux/actions/likePost';
 
 const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
@@ -19,7 +20,6 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
     dispatch(openModal({ modalProps: { isType: false, postId: id, fileRef: fileRef } }));
   };
 
-  const [isLike, setIsLike] = React.useState(false);
   const [likeCount, setLikeCount] = React.useState(null);
   const [likedPost, setLikedPost] = React.useState([]);
 
@@ -31,7 +31,7 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
     } catch (error) {
       console.error(error);
     }
-
+    console.log('Effect', likedPost);
     setLikedPost(previousLikes);
   }, []);
 
@@ -39,18 +39,18 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
     const previousLikes = likedPost;
     previousLikes.push(postId);
     setLikedPost(previousLikes);
+    console.log('handleVo', likedPost);
     localStorage.setItem('likes', JSON.stringify(likedPost));
   };
 
   const addLikePost = async (postID, postlikes) => {
     setLikeCount(null);
-    setIsLike(true);
     handleDisablingOfVoting(postID);
     setLikeCount(postlikes);
 
-    if (isLike) {
-      await firebase.setLikePost(postID);
-    }
+    dispatch(likePost(postID));
+
+    //await firebase.setLikePost(postID);
   };
 
   const checkIfPostIsAlreadyVoted = () => {

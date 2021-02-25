@@ -49,30 +49,6 @@ class Firebase {
     return postsArray;
   }
 
-  /*async getPostsByLatest() {
-    let postsByLatestArray = [];
-
-    const postsByLatest = await this.db.collection('posts').orderBy('time', 'desc').limit(3).get();
-
-    postsByLatest.forEach((doc) => {
-      postsByLatestArray.push({ id: doc.id, data: doc.data() });
-    });
-
-    return postsByLatestArray;
-  }
-
-  async getPostsByPopular() {
-    let postsByPopularArray = [];
-
-    const postsByPopular = await this.db.collection('posts').orderBy('views', 'desc').limit(4).get();
-
-    postsByPopular.forEach((doc) => {
-      postsByPopularArray.push({ id: doc.id, data: doc.data() });
-    });
-
-    return postsByPopularArray;
-  }*/
-
   async getPost(postID, isLike) {
     const postRef = await this.db.collection('posts').doc(postID);
 
