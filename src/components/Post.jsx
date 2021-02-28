@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { isLogin, updateLikes } from '../localStorage';
+import { isLogin, setLikes, updateLikes } from '../localStorage';
 import { openModal } from '../redux/actions/modal';
 import { likePost } from '../redux/actions/likePost';
 
@@ -29,7 +29,7 @@ const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFi
     dispatch(likePost(postID));
   };
 
-  localStorage.setItem('likes', JSON.stringify(likedPost));
+  setLikes(likedPost);
 
   const checkIfPostIsAlreadyLiked = () => {
     if (likedPost.includes(id)) {

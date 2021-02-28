@@ -1,5 +1,6 @@
 import { NotificationManager } from 'react-notifications';
 
+//Save Login for admin
 export const logIn = () => {
   localStorage.setItem('auth', true);
   NotificationManager.success('Login Successful!');
@@ -10,6 +11,15 @@ export const logOut = () => {
   NotificationManager.success('Logout Successful!');
 };
 
+export const isLogin = () => {
+  if (localStorage.getItem('auth')) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+//Update likes for post
 export const updateLikes = (postID) => {
   let array = localStorage.getItem('likes');
   let parsedArray = array ? JSON.parse(array) : [];
@@ -18,10 +28,6 @@ export const updateLikes = (postID) => {
   return newArray;
 };
 
-export const isLogin = () => {
-  if (localStorage.getItem('auth')) {
-    return true;
-  } else {
-    return false;
-  }
+export const setLikes = (likedPost) => {
+  localStorage.setItem('likes', JSON.stringify(likedPost));
 };
