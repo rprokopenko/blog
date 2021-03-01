@@ -152,7 +152,16 @@ body.modal-open {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 775px) {
+  .wrapper {
+    .content {
+      width: auto;
+      margin: 25px 10px 35px 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
   .wrapper {
     .content {
       .columns {

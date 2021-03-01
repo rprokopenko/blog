@@ -8,7 +8,7 @@ import { openModal } from '../redux/actions/modal';
 import { likePost } from '../redux/actions/likePost';
 
 const Post = ({ id, cover, fileRef, category, title, content, likes, views, isFirst = false }) => {
-  const isMobile = useMediaQuery({ query: `(max-width: 720px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: 740px)` });
 
   const [likeCount, setLikeCount] = React.useState(null);
   const [likedPost, setLikedPost] = React.useState(JSON.parse(localStorage.getItem('likes')) || []);

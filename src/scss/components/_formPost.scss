@@ -194,3 +194,41 @@
     }
   }
 }
+
+@media screen and (max-width: 550px) {
+  .form-post {
+    .container {
+      padding: 40px 25px;
+
+      form {
+        #input__image {
+          display: flex;
+          justify-content: left;
+          flex-direction: column;
+
+          div {
+            margin: 0;
+            margin-bottom: 7px;
+          }
+
+          div:last-child {
+            display: flex;
+            align-items: center;
+            margin-top: 7px;
+
+            svg {
+              margin-right: 7px;
+            }
+          }
+        }
+
+        .input__buttons {
+          input {
+            min-width: 120px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

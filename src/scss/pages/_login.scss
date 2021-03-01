@@ -116,11 +116,19 @@
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 540px) {
+  .login {
+    margin: 60px 15px 0 15px;
+  }
+}
+
+@media screen and (max-width: 470px) {
   .login {
     .container {
+      padding: 40px 30px 40px 30px;
+
       h2 {
-        font-size: 17px;
+        font-size: 23px;
       }
 
       form {

@@ -42,23 +42,28 @@
 @media screen and (max-width: 1134px) {
   .header {
     .container {
-      max-width: 760px;
+      width: auto;
+      margin: 0 10px;
     }
   }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 548px) {
   .header {
     .container {
-      max-width: 300px;
+      flex-direction: column;
+    }
+
+    &__nav {
+      margin-top: 20px;
     }
   }
-  .header__logo {
-    img {
-      width: 120px;
+}
+
+@media screen and (max-width: 345px) {
+  .header {
+    &__nav {
+      font-size: 15px;
     }
-  }
-  .header__nav {
-    font-size: 14px;
   }
 }
