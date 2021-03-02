@@ -55,7 +55,12 @@
           margin-right: 13px;
         }
 
-        div {
+        div:last-child {
+          display: flex;
+          align-items: center;
+        }
+
+        #image__error {
           font-weight: normal;
           font-size: 16px;
           line-height: 20px;
@@ -212,8 +217,6 @@
           }
 
           div:last-child {
-            display: flex;
-            align-items: center;
             margin-top: 7px;
 
             svg {

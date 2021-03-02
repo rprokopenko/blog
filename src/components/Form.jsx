@@ -179,7 +179,7 @@ const Form = () => {
                           </svg>
                         )}
 
-                        {props.touched.cover && props.errors.cover ? <div>{props.errors.cover}</div> : null}
+                        {props.touched.cover && props.errors.cover ? <div id='image__error'>{props.errors.cover}</div> : null}
                       </div>
                     </div>
 
