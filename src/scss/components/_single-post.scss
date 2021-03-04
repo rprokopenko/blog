@@ -129,3 +129,20 @@
     }
   }
 }
+
+@media screen and (max-width: 740px) {
+  .single-post {
+    &__content {
+      padding: 20px 20px 20px 20px;
+    }
+
+    &__title {
+      font-size: 25px;
+      line-height: 35px;
+    }
+
+    &__text {
+      font-size: 15px;
+    }
+  }
+}
